@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend-proyecto-ahorradas</title>
-
 </head>
 <body>
     <header>
@@ -17,37 +16,28 @@
     </header>
     <main>
         <div class="contenedor-cards">
-            <!-- BALANCE -->
-            <section class="card-balance">
+            <section class="card-balance"><!-- BALANCE -->
                 <h2>Balance</h2>
-                <!-- MONTO GANANCIAS -->
-                <div class="contenedor-monto">
+                <div class="contenedor-monto"><!-- MONTO GANANCIAS -->
                     <p>Ganancias</p>
                     <p class="monto-ganancia">$0</p>
                 </div>
-                <!-- MONTO GASTOS -->
-                <div class="contenedor-monto">
+                <div class="contenedor-monto"><!-- MONTO GASTOS -->
                     <p>Gastos</p>
                     <p class="monto-gastos">$0</p>
                 </div>
-                <!-- MONTO TOTAL -->
-                <div class="contenedor-monto">
+                <div class="contenedor-monto"><!-- MONTO TOTAL -->
                     <h3>Total</h3>
                     <p class="monto-total">$0</p>
                 </div>
             </section> <!-- FIN SECTION BALANCE -->
-
             <!-- FILTROS -->
             <section class="card-filtros">
-
                 <div class="titulo-boton">
                     <h2>Filtros</h2> <!-- TITULO -->
-
-                    <!-- BOTON OCULTAR FILTROS -->
-                    <button>Ocultar filtros</button>
+                    <button>Ocultar filtros</button><!-- BOTON OCULTAR FILTROS -->
                 </div>
-                <!-- SELECT TIPO-->
-                <div class="campo" id="campo-tipo">
+                <div class="campo" id="campo-tipo"><!-- SELECT TIPO-->
                     <label>Tipo</label>
                     <select id="tipo">
                         <option value="todos">Todos</option>
@@ -55,8 +45,7 @@
                         <option value="ganancia">Ganancia</option>
                     </select>
                 </div>
-                <!-- SELECT CATEGORIA -->
-                <div class="campo" id="campo-categoria">
+                <div class="campo" id="campo-categoria"><!-- SELECT CATEGORIA -->
                     <label>Categoría</label>
                     <select id="categoria">
                         <option value="todas">Todas</option>
@@ -68,13 +57,11 @@
                         <option value="trabajo">Trabajo</option>
                     </select>
                 </div>
-                <!-- INPUT FECHA -->
-                <div class="campo" id="campo-fecha">
+                <div class="campo" id="campo-fecha"><!-- INPUT FECHA -->
                     <label>Desde</label>
                     <input type="date">
                 </div>
-                <!-- SELECT ORDENAR POR-->
-                <div class="campo" id="campo-orden">
+                <div class="campo" id="campo-orden"><!-- SELECT ORDENAR POR-->
                     <label>Ordenar por</label>
                     <select id="orden">
                         <option value="mas-reciente"></option>
@@ -86,19 +73,13 @@
                     </select>
                 </div>
             </section> <!-- FIN SECTION FILTROS -->
-
         </div> <!-- FIN CONTENEDOR CARDS -->
-
-        <!-- OPERACIONES -->
-        <section class="card-operaciones">
+        <section class="card-operaciones"><!-- OPERACIONES -->
             <div class="contenedor-titulo">
                 <h2>Operaciones</h2>
-                <!-- BOTON NUEVA OPERACION-->
-                <button>+ Nueva operación</button>
+                <button>+ Nueva operación</button><!-- BOTON NUEVA OPERACION-->
             </div>
-
-            <!-- OPERACIONES ACTIVAS -->
-            <div class="operaciones-activas">
+            <div class="operaciones-activas"><!-- OPERACIONES ACTIVAS -->
                 <!-- ESTA PARTE NO ESTOY SEGURA DE QUE TENGA QUE IR DE ESTA MANERA, ES EL ENCABEZADO DE LA PARTE DE LAS OPERACIONES CUANDO YA SE HIZO ALGUNA, ESTO NO APARECE HASTA QUE CARGAS UNA OPERACION-->
                 <div class="contenedor-encabezado">
                     <h3>Descripción</h3>
@@ -107,33 +88,26 @@
                     <h3>Monto</h3>
                     <h3>Acciones</h3>
                 </div>
-
-                <!-- OPERACION -->
                  <!-- ESTA PARTE ESTOY SEGURA QUE NO VA DE ESTA MANERA, LO PUSE SOLO PARA VER LAS DIMENSIONES DE COMO QUEDARIA UNA OPERACION CARGADA -->
-                <div class="contenedor-operacion">
+                <div class="contenedor-operacion"><!-- OPERACION -->
                     <p>luz</p>
                     <p>servicios</p>
                     <p>28/12/2024</p>
                     <p>-$200</p>
-                    <!-- BOTONES EDITAR O ELIMINAR OPERACION-->
-                    <div class="botones-operaciones">
+                    <div class="botones-operaciones"><!-- BOTONES EDITAR O ELIMINAR OPERACION-->
                         <button>Editar</button>
                         <button>Eliminar</button>
                     </div>
                 </div>
             </div>
-            <!-- CARD PARA MOSTRAR CUANDO NO HAY OPERACIONES CARGADAS -->
              <!-- ESTA ES LA QUE APARECE APENAS ENTRAS A LA PAGINA CUANDO NO HAY OPERACIONES CARGADAS, LA IDEA ENTRE ESTE Y LA DE OPERACIONES ACTIVAS ES QUE UNA TENGA DISPLAY: NONE CUANDO LA OTRA SE ESTE MOSTRANDO -->
-            <div class="sin-operaciones">
+            <div class="sin-operaciones"><!-- CARD PARA MOSTRAR CUANDO NO HAY OPERACIONES CARGADAS -->
                 <img src="#" alt="imagen de billetera y movimiento de dinero">
                 <h3>Sin resultados</h3>
                 <p>Cambia los filtros o agrega operaciones</p>
             </div>
         </section> <!-- FIN SECTION OPERACIONES-->
-    
     </main>
-
-    <!-- ----- SCRIPT ------ -->
-    <script src="./index.js"></script>
+    <script src="./index.js"></script><!-- ----- SCRIPT ------ -->
 </body>
 </html>
