@@ -16,121 +16,116 @@
         </div>
     </header>
     <main>
-        <div class="contenedor-cards">
-            <!-- BALANCE -->
-            <section class="card-balance">
-                <h2>Balance</h2>
-                <!-- MONTO GANANCIAS -->
-                <div class="contenedor-monto">
-                    <p>Ganancias</p>
-                    <p class="monto-ganancia">$0</p>
+        <section id="vistaBalance"> <!-- vista balance -->
+            <div class="contenedor-cards">
+                <!-- BALANCE -->
+                <section class="card-balance">
+                    <h2>Balance</h2>
+                    <!-- MONTO GANANCIAS -->
+                    <div class="contenedor-monto">
+                        <p>Ganancias</p>
+                        <p class="monto-ganancia">$0</p>
+                    </div>
+                    <!-- MONTO GASTOS -->
+                    <div class="contenedor-monto">
+                        <p>Gastos</p>
+                        <p class="monto-gastos">$0</p>
+                    </div>
+                    <!-- MONTO TOTAL -->
+                    <div class="contenedor-monto">
+                        <h3>Total</h3>
+                        <p class="monto-total">$0</p>
+                    </div>
+                </section> <!-- FIN SECTION BALANCE -->
+                <!-- FILTROS -->
+                <section class="card-filtros">
+    
+                    <div class="titulo-boton">
+                        <h2>Filtros</h2> <!-- TITULO -->
+    
+                        <!-- BOTON OCULTAR FILTROS -->
+                        <button>Ocultar filtros</button>
+                    </div>
+                    <!-- SELECT TIPO-->
+                    <div class="campo" id="campo-tipo">
+                        <label>Tipo</label>
+                        <select id="tipo">
+                            <option value="todos">Todos</option>
+                            <option value="gasto">Gasto</option>
+                            <option value="ganancia">Ganancia</option>
+                        </select>
+                    </div>
+                    <!-- SELECT CATEGORIA -->
+                    <div class="campo" id="campo-categoria">
+                        <label>Categoría</label>
+                        <select id="categoria">
+                            <option value="todas">Todas</option>
+                            <option value="comida">Comida</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="salida">Salida</option>
+                            <option value="educacion">Educación</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="trabajo">Trabajo</option>
+                        </select>
+                    </div>
+                    <!-- INPUT FECHA -->
+                    <div class="campo" id="campo-fecha">
+                        <label>Desde</label>
+                        <input type="date">
+                    </div>
+                    <!-- SELECT ORDENAR POR-->
+                    <div class="campo" id="campo-orden">
+                        <label>Ordenar por</label>
+                        <select id="orden">
+                            <option value="mas-reciente"></option>
+                            <option value="menos-reciente"></option>
+                            <option value="mayor-monto"></option>
+                            <option value="menor-monto"></option>
+                            <option value="a-to-z"></option>
+                            <option value="z-to-a"></option>
+                        </select>
+                    </div>
+                </section> <!-- FIN SECTION FILTROS -->
+            </div> <!-- FIN CONTENEDOR CARDS -->
+            <!-- OPERACIONES -->
+            <div class="card-operaciones">
+                <div class="contenedor-titulo">
+                    <h2>Operaciones</h2>
+                    <!-- BOTON NUEVA OPERACION-->
+                    <button>+ Nueva operación</button>
                 </div>
-                <!-- MONTO GASTOS -->
-                <div class="contenedor-monto">
-                    <p>Gastos</p>
-                    <p class="monto-gastos">$0</p>
-                </div>
-                <!-- MONTO TOTAL -->
-                <div class="contenedor-monto">
-                    <h3>Total</h3>
-                    <p class="monto-total">$0</p>
-                </div>
-            </section> <!-- FIN SECTION BALANCE -->
-
-            <!-- FILTROS -->
-            <section class="card-filtros">
-
-                <div class="titulo-boton">
-                    <h2>Filtros</h2> <!-- TITULO -->
-
-                    <!-- BOTON OCULTAR FILTROS -->
-                    <button>Ocultar filtros</button>
-                </div>
-                <!-- SELECT TIPO-->
-                <div class="campo" id="campo-tipo">
-                    <label>Tipo</label>
-                    <select id="tipo">
-                        <option value="todos">Todos</option>
-                        <option value="gasto">Gasto</option>
-                        <option value="ganancia">Ganancia</option>
-                    </select>
-                </div>
-                <!-- SELECT CATEGORIA -->
-                <div class="campo" id="campo-categoria">
-                    <label>Categoría</label>
-                    <select id="categoria">
-                        <option value="todas">Todas</option>
-                        <option value="comida">Comida</option>
-                        <option value="servicios">Servicios</option>
-                        <option value="salida">Salida</option>
-                        <option value="educacion">Educación</option>
-                        <option value="transporte">Transporte</option>
-                        <option value="trabajo">Trabajo</option>
-                    </select>
-                </div>
-                <!-- INPUT FECHA -->
-                <div class="campo" id="campo-fecha">
-                    <label>Desde</label>
-                    <input type="date">
-                </div>
-                <!-- SELECT ORDENAR POR-->
-                <div class="campo" id="campo-orden">
-                    <label>Ordenar por</label>
-                    <select id="orden">
-                        <option value="mas-reciente"></option>
-                        <option value="menos-reciente"></option>
-                        <option value="mayor-monto"></option>
-                        <option value="menor-monto"></option>
-                        <option value="a-to-z"></option>
-                        <option value="z-to-a"></option>
-                    </select>
-                </div>
-            </section> <!-- FIN SECTION FILTROS -->
-
-        </div> <!-- FIN CONTENEDOR CARDS -->
-
-        <!-- OPERACIONES -->
-        <section class="card-operaciones">
-            <div class="contenedor-titulo">
-                <h2>Operaciones</h2>
-                <!-- BOTON NUEVA OPERACION-->
-                <button>+ Nueva operación</button>
-            </div>
-
-            <!-- OPERACIONES ACTIVAS -->
-            <div class="operaciones-activas">
-                <!-- ESTA PARTE NO ESTOY SEGURA DE QUE TENGA QUE IR DE ESTA MANERA, ES EL ENCABEZADO DE LA PARTE DE LAS OPERACIONES CUANDO YA SE HIZO ALGUNA, ESTO NO APARECE HASTA QUE CARGAS UNA OPERACION-->
-                <div class="contenedor-encabezado">
-                    <h3>Descripción</h3>
-                    <h3>Categoría</h3>
-                    <h3>Fecha</h3>
-                    <h3>Monto</h3>
-                    <h3>Acciones</h3>
-                </div>
-
-                <!-- OPERACION -->
-                 <!-- ESTA PARTE ESTOY SEGURA QUE NO VA DE ESTA MANERA, LO PUSE SOLO PARA VER LAS DIMENSIONES DE COMO QUEDARIA UNA OPERACION CARGADA -->
-                <div class="contenedor-operacion">
-                    <p>luz</p>
-                    <p>servicios</p>
-                    <p>28/12/2024</p>
-                    <p>-$200</p>
-                    <!-- BOTONES EDITAR O ELIMINAR OPERACION-->
-                    <div class="botones-operaciones">
-                        <button>Editar</button>
-                        <button>Eliminar</button>
+    
+                <!-- OPERACIONES ACTIVAS -->
+                <div class="operaciones-activas">
+                    <!-- ESTA PARTE NO ESTOY SEGURA DE QUE TENGA QUE IR DE ESTA MANERA, ES EL ENCABEZADO DE LA PARTE DE LAS OPERACIONES CUANDO YA SE HIZO ALGUNA, ESTO NO APARECE HASTA QUE CARGAS UNA OPERACION-->
+                    <div class="contenedor-encabezado">
+                        <h3>Descripción</h3>
+                        <h3>Categoría</h3>
+                        <h3>Fecha</h3>
+                        <h3>Monto</h3>
+                        <h3>Acciones</h3>
+                    </div>
+    
+                    <!-- OPERACION -->
+                     <!-- ESTA PARTE ESTOY SEGURA QUE NO VA DE ESTA MANERA, LO PUSE SOLO PARA VER LAS DIMENSIONES DE COMO QUEDARIA UNA OPERACION CARGADA -->
+                    <div class="contenedor-operacion"> <!-- pendiente ver botones -->
+                        <ul></ul>
                     </div>
                 </div>
-            </div>
-            <!-- CARD PARA MOSTRAR CUANDO NO HAY OPERACIONES CARGADAS -->
-             <!-- ESTA ES LA QUE APARECE APENAS ENTRAS A LA PAGINA CUANDO NO HAY OPERACIONES CARGADAS, LA IDEA ENTRE ESTE Y LA DE OPERACIONES ACTIVAS ES QUE UNA TENGA DISPLAY: NONE CUANDO LA OTRA SE ESTE MOSTRANDO -->
-            <div class="sin-operaciones">
-                <img src="#" alt="imagen de billetera y movimiento de dinero">
-                <h3>Sin resultados</h3>
-                <p>Cambia los filtros o agrega operaciones</p>
-            </div>
-        </section> <!-- FIN SECTION OPERACIONES-->
-    
+                <!-- CARD PARA MOSTRAR CUANDO NO HAY OPERACIONES CARGADAS -->
+                 <!-- ESTA ES LA QUE APARECE APENAS ENTRAS A LA PAGINA CUANDO NO HAY OPERACIONES CARGADAS, LA IDEA ENTRE ESTE Y LA DE OPERACIONES ACTIVAS ES QUE UNA TENGA DISPLAY: NONE CUANDO LA OTRA SE ESTE MOSTRANDO -->
+                <div class="sin-operaciones">
+                    <img src="#" alt="imagen de billetera y movimiento de dinero">
+                    <h3>Sin resultados</h3>
+                    <p>Cambia los filtros o agrega operaciones</p>
+                </div>
+            </div> <!-- FIN SECTION OPERACIONES-->
+        </section>
+        <section id="vistaCategorias"><!-- vista categorias -->
+        </section>
+        <section id="vistaReportes"><!-- vista reportes -->
+        </section>
+        
     </main>
 
     <!-- ----- SCRIPT ------ -->
