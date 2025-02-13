@@ -4,99 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend-proyecto-ahorradas</title>
+    <!-- ABAJO LINK A TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- LINK A ICONOS -->
+    <script src="https://kit.fontawesome.com/e2a5bd4572.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
 
 </head>
 <body>
-    <header>
+    <header class="w-full h-12 flex justify-between items-center p-1 bg-sky-600 text-white">
         <h1>AhorrADAs</h1>
-        <div class="contenedor-botones">
+        <div class="contenedor-icono">
+            <i id="icono" class="fa-solid fa-bars"></i>
+        </div><!-- ACA FALTA EL MENU HAMBURGUESA DESPLEGABLE -->
+        <div class="hidden">
             <button id="balance">Balance prueba</button>
             <button id="categorias">Categorías</button>
             <button id="reportes">Reportes</button>
         </div>
     </header>
     <main>
-        <section id="vistaBalance"> <!-- vista balance -->
-            <div class="contenedor-cards">
-                <!-- BALANCE -->
-                <section class="card-balance">
-                    <h2>Balance</h2>
-                    <!-- MONTO GANANCIAS -->
-                    <div class="contenedor-monto">
-                        <p>Ganancias</p>
-                        <p class="monto-ganancia">$0</p>
-                    </div>
-                    <!-- MONTO GASTOS -->
-                    <div class="contenedor-monto">
-                        <p>Gastos</p>
-                        <p class="monto-gastos">$0</p>
-                    </div>
-                    <!-- MONTO TOTAL -->
-                    <div class="contenedor-monto">
-                        <h3>Total</h3>
-                        <p class="monto-total">$0</p>
-                    </div>
-                </section> <!-- FIN SECTION BALANCE -->
-                <!-- FILTROS -->
-                <section class="card-filtros">
-    
-                    <div class="titulo-boton">
-                        <h2>Filtros</h2> <!-- TITULO -->
-    
-                        <!-- BOTON OCULTAR FILTROS -->
-                        <button>Ocultar filtros</button>
-                    </div>
-                    <!-- SELECT TIPO-->
-                    <div class="campo" id="campo-tipo">
-                        <label>Tipo</label>
-                        <select id="tipo">
-                            <option value="todos">Todos</option>
-                            <option value="gasto">Gasto</option>
-                            <option value="ganancia">Ganancia</option>
-                        </select>
-                    </div>
-                    <!-- SELECT CATEGORIA -->
-                    <div class="campo" id="campo-categoria">
-                        <label>Categoría</label>
-                        <select id="categoria">
-                            <option value="todas">Todas</option>
-                            <option value="comida">Comida</option>
-                            <option value="servicios">Servicios</option>
-                            <option value="salida">Salida</option>
-                            <option value="educacion">Educación</option>
-                            <option value="transporte">Transporte</option>
-                            <option value="trabajo">Trabajo</option>
-                        </select>
-                    </div>
-                    <!-- INPUT FECHA -->
-                    <div class="campo" id="campo-fecha">
-                        <label>Desde</label>
-                        <input type="date">
-                    </div>
-                    <!-- SELECT ORDENAR POR-->
-                    <div class="campo" id="campo-orden">
-                        <label>Ordenar por</label>
-                        <select id="orden">
-                            <option value="mas-reciente"></option>
-                            <option value="menos-reciente"></option>
-                            <option value="mayor-monto"></option>
-                            <option value="menor-monto"></option>
-                            <option value="a-to-z"></option>
-                            <option value="z-to-a"></option>
-                        </select>
-                    </div>
-                </section> <!-- FIN SECTION FILTROS -->
-            </div> <!-- FIN CONTENEDOR CARDS -->
+        <section class="flex flex-col items-center" id="vista-balance"> <!-- vista balance -->
+            <!-- BALANCE -->
+            <div class="w-11/12 h-72 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
+                                <h2>Balance</h2>
+                                <!-- MONTO GANANCIAS -->
+                                <div class="flex justify-between">
+                                    <p>Ganancias</p>
+                                    <p class="monto-ganancia">$0</p>
+                                </div>
+                                <!-- MONTO GASTOS -->
+                                <div class="flex justify-between">
+                                    <p>Gastos</p>
+                                    <p class="monto-gastos">$0</p>
+                                </div>
+                                <!-- MONTO TOTAL -->
+                                <div class="flex justify-between">
+                                    <h3>Total</h3>
+                                    <p class="monto-total">$0</p>
+                                </div>
+            </div> <!-- FIN SECTION BALANCE -->
+                           
+            <!-- FILTROS -->
+            <div class="w-11/12 h-96 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
+                
+                                <div class="p-2 flex justify-between"> <!-- TITULO Y BOTON-->
+                                    <h2>Filtros</h2> <!-- TITULO -->
+                
+                                    <!-- BOTON OCULTAR FILTROS -->
+                                    <button>Ocultar filtros</button>
+                                </div>
+                                <!-- SELECT TIPO-->
+                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-tipo">
+                                    <label>Tipo</label>
+                                    <select id="tipo">
+                                        <option value="todos">Todos</option>
+                                        <option value="gasto">Gasto</option>
+                                        <option value="ganancia">Ganancia</option>
+                                    </select>
+                                </div>
+                                <!-- SELECT CATEGORIA -->
+                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-categoria">
+                                    <label>Categoría</label>
+                                    <select id="categoria">
+                                        <option value="todas">Todas</option>
+                                        <option value="comida">Comida</option>
+                                        <option value="servicios">Servicios</option>
+                                        <option value="salida">Salida</option>
+                                        <option value="educacion">Educación</option>
+                                        <option value="transporte">Transporte</option>
+                                        <option value="trabajo">Trabajo</option>
+                                    </select>
+                                </div>
+                                <!-- INPUT FECHA -->
+                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-fecha">
+                                    <label>Desde</label>
+                                    <input type="date">
+                                </div>
+                                <!-- SELECT ORDENAR POR-->
+                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-orden">
+                                    <label>Ordenar por</label>
+                                    <select id="orden">
+                                        <option value="mas-reciente"></option>
+                                        <option value="menos-reciente"></option>
+                                        <option value="mayor-monto"></option>
+                                        <option value="menor-monto"></option>
+                                        <option value="a-to-z"></option>
+                                        <option value="z-to-a"></option>
+                                    </select>
+                                </div>
+            </div> <!-- FIN SECTION FILTROS -->
+            
             <!-- OPERACIONES -->
-            <div class="card-operaciones">
-                <div class="contenedor-titulo">
+            <div class="w-11/12 h-96 p-2.5 mt-14 border-2 rounded-lg">
+                <div class="contenedor-tituloYBoton"> 
+                    <!-- ESTE CONTENEDOR TIENE DISPLAY NONE EN LA VISTA"NUEVA OPERACION".
+                    EN "SIN OPERACIONES" Y "OPERACIONES ACTIVAS" ESTA VISIBLE, SE PUEDE HACER CON LOS BOTONES "NUEVA OP"(DISPLAY:NONE) Y "AGREGAR"(DISPLAY:FLEX) -->
+                    
+                    <!--TITULO-->
                     <h2>Operaciones</h2>
                     <!-- BOTON NUEVA OPERACION-->
+                     <!--ESTE BOTON HABILITA LA VISTA DE LA CARD "NUEVA OPERACION"-->
                     <button>+ Nueva operación</button>
+
+                </div>
+                
+                 <!--VISTA SIN OPERACIONES-->
+                 <div class="flex flex-col items-center" id="card-sin-operaciones">
+                    <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero">
+                    <h3>Sin resultados</h3>
+                    <p>Cambia los filtros o agrega operaciones</p>
+                </div>
+
+                <!--VISTA NUEVA OPERACION-->
+                <div class="hidden" id="vista-nueva-op"> <!-- ESTO NO DEBERIA VERSE A MENOS QUE TOQUES EL BOTON "NUEVA OPERACION", VA CON DISPLAY HIDDEN-->
+                    <form>
+                        <div class="campo">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion">
+                        </div>
+                        <div>
+                            <label for="monto">Monto</label>
+                            <input type="number" id="monto">
+                        </div>
+                        <div>
+                            <label for="tipo">Tipo</label>
+                            <select name="tipo" id="tipo">
+                                <option value="gasto" checked>Gasto</option>
+                                <option value="ganancia">Ganacia</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="categoria">Categoría</label>
+                            <select name="servicios" id="servicios">Servicios</select>
+                            <select name="salidas" id="salids">Salidas</select>
+                            <select name="educacion" id="educacion">Educación</select>
+                            <select name="transporte" id="transporte">Transporte</select>
+                            <select name="trabajo" id="trabajo">Trabajo</select>
+                        </div>
+                        <div>
+                            <label for="fecha">Fecha</label>
+                            <input type="date" id="fecha">
+                        </div>
+                        <button id="boton-cancelar">Cancelar</button>
+                        <button id="boton-agregar">Agregar</button>
+                    </form>
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
-                <div class="operaciones-activas">
+                <div class="hidden operaciones-activas">
                     <!-- ESTA PARTE NO ESTOY SEGURA DE QUE TENGA QUE IR DE ESTA MANERA, ES EL ENCABEZADO DE LA PARTE DE LAS OPERACIONES CUANDO YA SE HIZO ALGUNA, ESTO NO APARECE HASTA QUE CARGAS UNA OPERACION-->
                     <div class="contenedor-encabezado">
                         <h3>Descripción</h3>
@@ -107,24 +164,83 @@
                     </div>
     
                     <!-- OPERACION -->
-                     <!-- ESTA PARTE ESTOY SEGURA QUE NO VA DE ESTA MANERA, LO PUSE SOLO PARA VER LAS DIMENSIONES DE COMO QUEDARIA UNA OPERACION CARGADA -->
                     <div class="contenedor-operacion"> <!-- pendiente ver botones -->
                         <ul></ul>
                     </div>
                 </div>
-                <!-- CARD PARA MOSTRAR CUANDO NO HAY OPERACIONES CARGADAS -->
-                 <!-- ESTA ES LA QUE APARECE APENAS ENTRAS A LA PAGINA CUANDO NO HAY OPERACIONES CARGADAS, LA IDEA ENTRE ESTE Y LA DE OPERACIONES ACTIVAS ES QUE UNA TENGA DISPLAY: NONE CUANDO LA OTRA SE ESTE MOSTRANDO -->
-                <div class="sin-operaciones">
-                    <img src="#" alt="imagen de billetera y movimiento de dinero">
-                    <h3>Sin resultados</h3>
-                    <p>Cambia los filtros o agrega operaciones</p>
+            </div> <!-- FIN OPERACIONES-->
+        </section><!--fin vista balance-->
+
+        <section class="hidden" id="vistaCategorias"><!-- vista categorias -->
+        </section><!--fin vista categorias-->
+
+        <section class="hidden" id="vista-reportes"><!-- vista reportes -->
+            <div class="card-sin-reportes">
+                <h2>Reportes</h2>
+                <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance">
+                <h3>Operaciones insuficientes</h3>
+                <p>Prueba agregando más operaciones</p>
+            </div>
+            <div class="card-con-reportes">
+                <h3>Reportes</h3>
+                <h4>Resumen</h4>
+                <div class="container-resumen">
+                    <div>
+                        <p>Categoría con mayor ganancia</p>
+                        <p>categoria</p>
+                        <p>monto</p>
+                    </div>
+                    <div>
+                        <p>Categoría con mayor gasto</p>
+                        <p>categoria</p>
+                        <p>monto</p>
+                    </div>
+                    <div>
+                        <p>Categoría con mayor balance</p>
+                        <p>categoria</p>
+                        <p>monto</p>
+                    </div>
+                    <div>
+                        <p>Mes con mayor ganancia</p>
+                        <p>categoria</p>
+                        <p>monto</p>
+                    </div>
+                    <div>
+                        <p>Mes con mayor gasto</p>
+                        <p>categoria</p>
+                        <p>monto</p>
+                    </div>
                 </div>
-            </div> <!-- FIN SECTION OPERACIONES-->
-        </section>
-        <section id="vistaCategorias"><!-- vista categorias -->
-        </section>
-        <section id="vistaReportes"><!-- vista reportes -->
-        </section>
+                <div class="container-totales-categorias">
+                    <div>
+                        <h4>Categoría</h4>
+                        <h4>Ganancias</h4>
+                        <h4>Gastos</h4>
+                        <h4>Balance</h4>
+                    </div>
+                    <div>
+                        <p>nombre categoría</p>
+                        <p>numero ganancias</p>
+                        <p>numero gastos</p>
+                        <p>numero balance</p>
+                    </div>
+                </div>
+                <div class="totales-por-mes">
+                    <div>
+                        <h4>Mes</h4>
+                        <h4>Ganancias</h4>
+                        <h4>Gastos</h4>
+                        <h4>Balance</h4>
+                    </div>
+                    <div>
+                        <p>fecha</p>
+                        <p>numero ganancias</p>
+                        <p>numero gastos</p>
+                        <p>numero balance</p>
+                    </div>
+                </div>
+            </div>
+        </section> <!--fin vista reportes-->
         
     </main>
 
