@@ -4,28 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend-proyecto-ahorradas</title>
-    <!-- ABAJO LINK A TAILWIND -->
+    
+    <!-- LINK A GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- LINK A TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <!--RESPONSIVE TAILWIND-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
     <!-- LINK A ICONOS -->
     <script src="https://kit.fontawesome.com/e2a5bd4572.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
-
 </head>
 <body>
     <header class="w-full h-12 flex justify-between items-center p-1 bg-sky-600 text-white">
         <h1>AhorrADAs</h1>
-        <div class="contenedor-icono">
-            <i id="icono" class="fa-solid fa-bars"></i>
-        </div><!-- ACA FALTA EL MENU HAMBURGUESA DESPLEGABLE -->
-        <div class="hidden">
-            <button id="balance">Balance prueba</button>
-            <button id="categorias">Categorías</button>
-            <button id="reportes">Reportes</button>
+        <button><i id="boton-hamburguesa" class="fa-solid fa-bars"></i></button>
+        <div id="botones-hamburguesa" class="hidden bg-sky-500 h-40 w-40 p-2.5 absolute top-12 right-0 flex flex-col justify-around items-start">
+            <button class="balance">Balance</button>
+            <button class="categorias">Categorías</button>
+            <button class="reportes">Reportes</button>
+        </div>
+        <div id="botones-menu" class="hidden">
+            <button class="balance">Balance</button>
+            <button class="categorias">Categorías</button>
+            <button class="reportes">Reportes</button>
         </div>
     </header>
     <main>
-        <section class="flex flex-col items-center" id="vista-balance"> <!-- vista balance -->
+
+        <!-- vista balance -->
+        <section class="flex flex-col items-center" id="vista-balance"> 
             <!-- BALANCE -->
             <div class="w-11/12 h-72 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
                                 <h2>Balance</h2>
@@ -97,7 +119,7 @@
             </div> <!-- FIN SECTION FILTROS -->
             
             <!-- OPERACIONES -->
-            <div class="w-11/12 h-96 p-2.5 mt-14 border-2 rounded-lg">
+            <div class="w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg">
                 <div class="contenedor-tituloYBoton"> 
                     <!-- ESTE CONTENEDOR TIENE DISPLAY NONE EN LA VISTA"NUEVA OPERACION".
                     EN "SIN OPERACIONES" Y "OPERACIONES ACTIVAS" ESTA VISIBLE, SE PUEDE HACER CON LOS BOTONES "NUEVA OP"(DISPLAY:NONE) Y "AGREGAR"(DISPLAY:FLEX) -->
@@ -171,48 +193,56 @@
             </div> <!-- FIN OPERACIONES-->
         </section><!--fin vista balance-->
 
-        <section class="hidden" id="vistaCategorias"><!-- vista categorias -->
+        <!-- vista categorias -->
+        <section class="hidden" id="vistaCategorias">
+            <!--esta parte le toca a tefi-->
         </section><!--fin vista categorias-->
 
-        <section class="hidden" id="vista-reportes"><!-- vista reportes -->
-            <div class="card-sin-reportes">
+        <!-- vista reportes -->
+        <section class="hidden flex flex-col items-center" id="vista-reportes">
+            
+            <!--card sin reportes-->
+            <div class="hidden w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col items-center"> 
                 <h2>Reportes</h2>
                 <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance">
                 <h3>Operaciones insuficientes</h3>
                 <p>Prueba agregando más operaciones</p>
-            </div>
-            <div class="card-con-reportes">
+            </div> <!--fin card sin reportes-->
+
+            <!--card con reportes-->
+            <div class="w-11/12 h-[1000px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col"> 
                 <h3>Reportes</h3>
                 <h4>Resumen</h4>
-                <div class="container-resumen">
-                    <div>
-                        <p>Categoría con mayor ganancia</p>
-                        <p>categoria</p>
-                        <p>monto</p>
+                <div class="w-full flex flex-col justify-around">
+                    <span class="w-full mt-2">Categoría con mayor ganancia</span>
+                    <div class="w-full grid grid-cols-2 gap-5">
+                        <span class="text-end">categoria</span>
+                        <span class="text-end">monto</span>
                     </div>
-                    <div>
-                        <p>Categoría con mayor gasto</p>
-                        <p>categoria</p>
-                        <p>monto</p>
+                    <span class="w-full mt-5">Categoría con mayor gasto</span>
+                    <div class="w-full grid grid-cols-2 gap-5">
+                        <span class="text-end">categoria</span>
+                        <span class="text-end">monto</span>
                     </div>
-                    <div>
-                        <p>Categoría con mayor balance</p>
-                        <p>categoria</p>
-                        <p>monto</p>
+                    <span class="w-full mt-5">Categoría con mayor balance</span>
+                    <div class="w-full grid grid-cols-2 gap-5">
+                        <span class="text-end">categoria</span>
+                        <span class="text-end">monto</span>
                     </div>
-                    <div>
-                        <p>Mes con mayor ganancia</p>
-                        <p>categoria</p>
-                        <p>monto</p>
+                    <span class="w-full mt-2.5">Mes con mayor ganancia</span>
+                    <div class="w-full grid grid-cols-2 gap-5">
+                        <span class="text-end">categoria</span>
+                        <span class="text-end">monto</span>
                     </div>
-                    <div>
-                        <p>Mes con mayor gasto</p>
-                        <p>categoria</p>
-                        <p>monto</p>
+                    <span class="w-full mt-2.5">Mes con mayor gasto</span>
+                    <div class="w-full grid grid-cols-2 gap-5">
+                        <span class="text-end">categoria</span>
+                        <span class="text-end">monto</span>
                     </div>
                 </div>
-                <div class="container-totales-categorias">
-                    <div>
+                <div class="mt-4"> <!--container-totales-categorias-->
+                    <h3>Totales por categoría</h3>
+                    <div class="w-full my-2 grid grid-cols-4 gap-4">
                         <h4>Categoría</h4>
                         <h4>Ganancias</h4>
                         <h4>Gastos</h4>
@@ -225,7 +255,8 @@
                         <p>numero balance</p>
                     </div>
                 </div>
-                <div class="totales-por-mes">
+                <div class="mt-4"> <!--totales-por-mes-->
+                    <h3>Totales por mes</h3>
                     <div>
                         <h4>Mes</h4>
                         <h4>Ganancias</h4>
@@ -239,7 +270,8 @@
                         <p>numero balance</p>
                     </div>
                 </div>
-            </div>
+            </div><!--fin card con reportes-->
+
         </section> <!--fin vista reportes-->
         
     </main>
