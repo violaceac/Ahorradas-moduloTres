@@ -17,6 +17,7 @@ function $(selector) {
 let $botonMenu = $("#boton-hamburguesa")
 
 // contenedor botones 
+
 let $modalBotones = $("#botones-hamburguesa")
 
 // botones para vistas
@@ -53,3 +54,6 @@ $botonMenu.addEventListener("click", () => {
 //         $modoClaro.style.display = "flex"
 //     }
 // })
+
+
+

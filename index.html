@@ -29,6 +29,8 @@
     <script src="https://kit.fontawesome.com/e2a5bd4572.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
 </head>
+
+
 <body>
     <header class="w-full h-12 flex justify-between items-center p-1 bg-sky-600 text-white">
         <h1>AhorrADAs</h1>
@@ -192,11 +194,69 @@
                 </div>
             </div> <!-- FIN OPERACIONES-->
         </section><!--fin vista balance-->
+      
+       <!-- vista categorias -->
+        <section id="categorias">
+            <div><!-- contenedor general -->
+                <h2>Categorías</h2>
+                <label>Nombre de la categoría</label>
+                <div><!-- input + boton -->
+                    <div class="inputCategorias"><!-- contenedor general -->
+                        <input class="input" type="text" name id="inputt-categorias">
+                    </div>
+                    <div class="botonDeAgregar"><!-- boton agregar -->
+                        <button id="agregar-categoria-boton">Agregar</button>
+                    </div>
+                </div>
+                <div><!-- categorias -->
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Comida</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Servicios</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Salidas</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Educación</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Transporte</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
+                        <span class="text-gray-700">Trabajo</span>
+                        <div class="flex space-x-2">
+                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
+                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </div>
+                    </ul>
+                </div>
+                <button class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
+            </div>
 
-        <!-- vista categorias -->
-        <section class="hidden" id="vistaCategorias">
-            <!--esta parte le toca a tefi-->
-        </section><!--fin vista categorias-->
+      </section> <!-- fin vista categorias-->
+
 
         <!-- vista reportes -->
         <section class="hidden flex flex-col items-center" id="vista-reportes">
@@ -255,6 +315,7 @@
                         <p>numero balance</p>
                     </div>
                 </div>
+
                 <div class="mt-4"> <!--totales-por-mes-->
                     <h3>Totales por mes</h3>
                     <div>
