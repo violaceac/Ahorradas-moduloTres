@@ -129,7 +129,6 @@
                     <!--TITULO-->
                     <h2>Operaciones</h2>
                     <!-- BOTON NUEVA OPERACION-->
-                     <!--ESTE BOTON HABILITA LA VISTA DE LA CARD "NUEVA OPERACION"-->
                     <button>+ Nueva operación</button>
 
                 </div>
@@ -142,7 +141,7 @@
                 </div>
 
                 <!--VISTA NUEVA OPERACION-->
-                <div class="hidden" id="vista-nueva-op"> <!-- ESTO NO DEBERIA VERSE A MENOS QUE TOQUES EL BOTON "NUEVA OPERACION", VA CON DISPLAY HIDDEN-->
+                <div class="hidden" id="vista-nueva-op">
                     <form>
                         <div class="campo">
                         <label for="descripcion">Descripción</label>
@@ -177,21 +176,20 @@
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
-                <div class="hidden operaciones-activas">
-                    <!-- ESTA PARTE NO ESTOY SEGURA DE QUE TENGA QUE IR DE ESTA MANERA, ES EL ENCABEZADO DE LA PARTE DE LAS OPERACIONES CUANDO YA SE HIZO ALGUNA, ESTO NO APARECE HASTA QUE CARGAS UNA OPERACION-->
-                    <div class="contenedor-encabezado">
-                        <h3>Descripción</h3>
-                        <h3>Categoría</h3>
-                        <h3>Fecha</h3>
-                        <h3>Monto</h3>
-                        <h3>Acciones</h3>
-                    </div>
-    
+                <table class="hidden operaciones-activas">
+                    <thead class="contenedor-encabezado">
+                        <tr>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
                     <!-- OPERACION -->
-                    <div class="contenedor-operacion"> <!-- pendiente ver botones -->
-                        <ul></ul>
-                    </div>
-                </div>
+                    <tbody class="contenedor-operacion"> <!-- pendiente ver botones -->
+                    </tbody>
+                </table>
             </div> <!-- FIN OPERACIONES-->
         </section><!--fin vista balance-->
       
@@ -255,7 +253,7 @@
                 <button class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
             </div>
 
-      </section> <!-- fin vista categorias-->
+        </section> <!-- fin vista categorias-->
 
 
         <!-- vista reportes -->
