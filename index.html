@@ -36,14 +36,14 @@
         <h1>AhorrADAs</h1>
         <button><i id="boton-hamburguesa" class="fa-solid fa-bars"></i></button>
         <div id="botones-hamburguesa" class="hidden bg-sky-500 h-40 w-40 p-2.5 absolute top-12 right-0 flex flex-col justify-around items-start">
-            <button class="balance">Balance</button>
-            <button class="categorias">Categorías</button>
-            <button class="reportes">Reportes</button>
+            <button id="balance">Balance</button>
+            <button id="categorias">Categorías</button>
+            <button id="reportes">Reportes</button>
         </div>
         <div id="botones-menu" class="hidden">
-            <button class="balance">Balance</button>
-            <button class="categorias">Categorías</button>
-            <button class="reportes">Reportes</button>
+            <button>Balance</button>
+            <button>Categorías</button>
+            <button>Reportes</button>
         </div>
     </header>
     <main>
@@ -122,19 +122,14 @@
             
             <!-- OPERACIONES -->
             <div class="w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg">
-                <div class="contenedor-tituloYBoton"> 
-                    <!-- ESTE CONTENEDOR TIENE DISPLAY NONE EN LA VISTA"NUEVA OPERACION".
-                    EN "SIN OPERACIONES" Y "OPERACIONES ACTIVAS" ESTA VISIBLE, SE PUEDE HACER CON LOS BOTONES "NUEVA OP"(DISPLAY:NONE) Y "AGREGAR"(DISPLAY:FLEX) -->
-                    
-                    <!--TITULO-->
-                    <h2>Operaciones</h2>
-                    <!-- BOTON NUEVA OPERACION-->
-                    <button>+ Nueva operación</button>
-
-                </div>
-                
                  <!--VISTA SIN OPERACIONES-->
                  <div class="flex flex-col items-center" id="card-sin-operaciones">
+                    <div class="contenedor-tituloYBoton"> 
+                        <!--TITULO-->
+                        <h2>Operaciones</h2>
+                        <!-- BOTON NUEVA OPERACION-->
+                        <button class="boton-nueva-op">+ Nueva operación</button>
+                    </div>
                     <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero">
                     <h3>Sin resultados</h3>
                     <p>Cambia los filtros o agrega operaciones</p>
@@ -176,25 +171,33 @@
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
-                <table class="hidden operaciones-activas">
-                    <thead class="contenedor-encabezado">
-                        <tr>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Categoría</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Monto</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <!-- OPERACION -->
-                    <tbody class="contenedor-operacion"> <!-- pendiente ver botones -->
-                    </tbody>
-                </table>
+                <div id="operaciones-activas" class="hidden" >
+                    <div class="contenedor-tituloYBoton"> 
+                        <!--TITULO-->
+                        <h2>Operaciones</h2>
+                        <!-- BOTON NUEVA OPERACION-->
+                        <button class="boton-nueva-op">+ Nueva operación</button>
+                    </div>
+                    <table>
+                        <thead class="contenedor-encabezado">
+                            <tr>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <!-- OPERACION -->
+                        <tbody class="contenedor-operacion"> <!-- pendiente ver botones -->
+                        </tbody>
+                    </table>
+                </div>
             </div> <!-- FIN OPERACIONES-->
         </section><!--fin vista balance-->
       
        <!-- vista categorias -->
-        <section id="categorias">
+        <section class="hidden" id="vista-categorias">
             <div><!-- contenedor general -->
                 <h2>Categorías</h2>
                 <label>Nombre de la categoría</label>
