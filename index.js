@@ -1,7 +1,17 @@
-window.onload = () => {
+
 
 // "CATEGORIA CON MAYOR GANANCIA"
 // REDUCE PARA CADA CATEGORIA PARA OBTENER UN TOTAL Y HACER COMPARACION
+
+function guardarEnLS(key, data) {
+  localStorage.setItem(key, JSON.stringify(data))
+}
+
+function leerLS(key) {
+  const datos = JSON.parse(localStorage.getItem(key))
+  return datos;
+} 
+
 
 
 // selector de clases
@@ -16,31 +26,17 @@ function $(selector) {
 
 // ========================================
 
+// MENU HAMBURGUESA
+
 //boton para desplegar menu hamburguesa
 let $botonMenu = $("#boton-hamburguesa")
 // contenedor botones menu hamburguesa
 let $modalBotones = $("#botones-hamburguesa")
 
-
-// =========================================
-
 // EVENTO CLICK menu hamburguesa
 $botonMenu.addEventListener("click", () => {
   $modalBotones.classList.toggle("hidden")
 })
-
-
-// FORMA LARGA MENU HAMBURGUESA
-// $botonMenu.addEventListener("click", () => {
-//     if ($modalBotones.classList.contains("hidden")) {
-//         $modalBotones.classList.remove("hidden")
-//         $modalBotones.classList.add("flex")
-//     } else if($modalBotones.classList.contains("flex")) {
-//         $modalBotones.classList.remove("flex")
-//         $modalBotones.classList.add("hidden")
-//     }
-// })
-
 
 // ===========================================
 
@@ -52,79 +48,203 @@ let $sectionVistaCategorias = $("#vista-categorias");
 let $sectionVistaReportes = $("#vista-reportes");
 
 // botones para vistas
-let $btnVistaBalance = $("#balance");
-let $btnVistaCategorias = $("#categorias");
-let $btnVistaReportes = $("#reportes")
+let $btnVistaBalance = $$(".balance");
+let $btnVistaCategorias = $$(".categorias");
+let $btnVistaReportes = $$(".reportes")
 
 // cambiar vistas
+$btnVistaBalance.forEach(e => {
+  e.addEventListener("click", () => {
+    mostrarElemento([$sectionVistaBalance]);
+    ocultarElemento([$sectionVistaReportes, $sectionVistaCategorias, $sectionNuevaOp, $modalBotones])
+    });
+})
 
-// Ocultar un elemento
-$btnVistaCategorias.addEventListener("click", () => {
-$sectionVistaCategorias.style.display = "flex";
-$sectionVistaReportes.style.display = "none";
-$sectionVistaBalance.style.display = "none";
-});
+$btnVistaCategorias.forEach(e => {
+  e.addEventListener("click", () => {
+    mostrarElemento([$sectionVistaCategorias]);
+    ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones])
+  });
+})
 
-$btnVistaBalance.addEventListener("click", () => {
-  $sectionVistaBalance.style.display = "flex";
-  $sectionVistaReportes.style.display = "none";
-  $sectionVistaCategorias.style.display = "none";
-});
+$btnVistaReportes.forEach(e => {
+  e.addEventListener("click", () => {
+    mostrarElemento([$sectionVistaReportes]);
+    ocultarElemento([$sectionVistaBalance, $sectionVistaCategorias, $sectionNuevaOp, $modalBotones])
+  });
+})
 
-$btnVistaReportes.addEventListener("click", () => {
-  $sectionVistaReportes.style.display = "flex";
-  $sectionVistaCategorias.style.display = "none";
-  $sectionVistaBalance.style.display = "none";
-});
-
-
-
-// element.style.display = "none";  // JavaScript puro
-// $("#elemento").hide();           // jQuery
-
-// // Mostrar un elemento 
-// element.style.display = "block"; // JavaScript puro
-// $("#elemento").show();
+const mostrarElemento = (selectors) => {
+  for (const selector of selectors) {
+    selector.classList.remove("hidden");
+    selector.classList.add("flex");
+  }
+};
+const ocultarElemento = (selectors) => {
+  for (const selector of selectors) {
+    selector.classList.add("hidden");
+  }
+};
 
 
 
 
+// ===========================================================
 
 
-
-// $btnVistaBalance.addEventListener("click", () => {
-//   showElement([$sectionVistaBalance]);
-//   hideElement([$sectionVistaCategorias, $sectionVistaReportes])
-// })
-
-// $btnVistaCategorias.addEventListener("click", () => {
-//   showElement([$sectionVistaCategorias]);
-//   hideElement([$sectionVistaBalance, $sectionVistaReportes])
-// })
-
-// $btnVistaReportes.addEventListener("click", () => {
-//   showElement([$sectionVistaReportes]);
-//   hideElement([$sectionVistaCategorias, $sectionVistaBalance])
-// })
-// $("#button-view-home").addEventListener("click", () => {
-//   showElement([$sectionViewHome])
-//   hideElement([$sectionViewVenta, $sectionViewReporte])
-// })
 
 
 // NUEVA OPERACION
 
+//array vacio para guardar operaciones
+let todasLasOp = []
+
 //boton nueva operacion
 let $botonNuevaOp = $$(".boton-nueva-op");
+//boton agregar
+let $botonAgregar = $("#boton-agregar")
 
-//cards vistas
-let $cardSinOp = $("#card-sin-operaciones");
-let $cardNuevaOp = $("#vista-nueva-op");
-let $cardOpActivas = $("#operaciones-activas")
+//vistas
+let $sectionNuevaOp = $("#nueva-op");
+let $cardSinOp = $("#card-sin-operaciones")
+let $vistaOpActivas = $("#card-operaciones-activas")
+let $formAgregar = $("#form-agregar")
 
-// $botonNuevaOp.addEventListener("click", () => {
-// $cardNuevaOp.classList.toggle("hidden")
+// funcionalidad de todos los botones "nueva operacion"
+$botonNuevaOp.forEach(e => {
+  e.addEventListener("click", () => {
+    mostrarElemento([$sectionNuevaOp]);
+    ocultarElemento([$sectionVistaBalance]);
+    });
+})
+
+// nueva operacion
+
+$formAgregar.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  const nuevaOp = {
+    id: crypto.randomUUID(),
+    descripcion: evento.target[0].value,
+    monto: Number(evento.target[1].value),
+    tipo: evento.target[2].value,
+    categoria: evento.target[3].value,
+    fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
+  }
+
+  todasLasOp.push(nuevaOp)
+  guardarEnLS("operaciones", todasLasOp)
+  pintarOperaciones(todasLasOp)
+   
+})
+
+// mostrar las operaciones
+
+const $tableOperaciones = $("#operacion")
+
+function pintarOperaciones(array) {
+  $tableOperaciones.innerHTML = ""
+
+  for (const operacion of array) {
+    $tableOperaciones.innerHTML += `<tr>
+    <td>${operacion.descripcion} </td>
+    <td>${operacion.monto} </td>
+    <td>${operacion.categoria} </td>
+    <td>${operacion.fecha} </td>
+    </tr>` 
+  }
+}
+
+//agregar y volver a "vistaBalance"
+$botonAgregar.addEventListener("click", () => {
+  mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
+  ocultarElemento([$sectionNuevaOp, $cardSinOp])
+})
+
+
+// function pintarDatos(array) {
+
+//   $divListVentas.innerHTML = "";
+//   for (const venta of array) {
+//     $divListVentas.innerHTML += `<div class="w-full border border-black my-2">
+//       <h5>Tipo: ${venta.type}</h5>
+//       <p>Valor: ${venta.value}</p>
+//       <p>Valor: ${dayjs(venta.date).format("DD/MM/YYYY")}</p>
+//       <p>Cantidad: ${venta.quantity}</p>
+//       <div>
+//         <button id="${venta.id}" class="button-edit border border-black shadow bg-green-600">Editar</button>
+//         <button id="${venta.id}" class="button-delete border border-black shadow bg-red-600">Eliminar</button>
+//       </div>
+//     </div>`
+//   }
+
+//   agregarEventosEditYDelete()
+// }
+
+
+// function agregarVenta(objetoNuevaVenta) {
+//   const datos = obtenerDatos("ventas")
+//   guardarDatos("ventas", [...datos, objetoNuevaVenta])
+// }
+
+
+
+// $formCreate.addEventListener("submit", (evento) => {
+//   evento.preventDefault();
+
+//   const nuevaVenta = {
+//     id: crypto.randomUUID(),
+//     type: evento.target[0].value,
+//     value: Number(evento.target[1].value),
+//     date: dayjs(evento.target[2].value).format("YYYY-MM-DD"),
+//     quantity: Number(evento.target[3].value)
+//   }
+
+
+
+//   funciones.agregarVenta(nuevaVenta)
+
+//   const datos = funciones.obtenerDatos("ventas")
+//   pintarDatos(datos)
 // })
+
+
+
+
+
+
+
+
+
+
+
+// // boton agregar operacion
+// let $btnAgregar = $("#boton-agregar")
+
+// $btnAgregar.addEventListener("click", () => {
+//   mostrarElemento([$sectionVistaBalance, $vistaOpActivas])
+//   ocultarElemento([$cardSinOp, $sectionNuevaOp])
+// })
+
+// function agregarVenta(objetoNuevaVenta) {
+//   const datos = obtenerDatos("ventas")
+//   guardarDatos("ventas", [...datos, objetoNuevaVenta])
+// }
+
+// function obtenerDatos(key) {
+//   const datos = JSON.parse(localStorage.getItem(key))
+//   return datos ? datos : [];
+// }
+
+// function guardarDatos(key, data) {
+//   localStorage.setItem(key, JSON.stringify(data))
+// }
+
+
+
+
+
+
 
 
 // $("#button-view-home").addEventListener("click", () => {
@@ -157,7 +277,11 @@ let $cardOpActivas = $("#operaciones-activas")
 
 
 
+
+
+
+
+window.onload = () => {
+  todasLasOp = leerLS("operaciones")
+  pintarOperaciones(todasLasOp)
 }
-
-
-
