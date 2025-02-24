@@ -1,32 +1,28 @@
-
-
-// "CATEGORIA CON MAYOR GANANCIA"
-// REDUCE PARA CADA CATEGORIA PARA OBTENER UN TOTAL Y HACER COMPARACION
+// funciones de LocalStorage
+import categorias from "./categorias.js";
 
 function guardarEnLS(key, data) {
   localStorage.setItem(key, JSON.stringify(data))
 }
-
 function leerLS(key) {
   const datos = JSON.parse(localStorage.getItem(key))
-  return datos;
+  return datos ? datos : [];
 } 
 
 
+// ==== selectores =============================
 
 // selector de clases
 function $$(selector) {
   return document.querySelectorAll(selector);
 }
-
 // selector de id
 function $(selector) {
   return document.querySelector(selector);
 }
 
-// ========================================
 
-// MENU HAMBURGUESA
+// ==== menu hamburguesa ==========================
 
 //boton para desplegar menu hamburguesa
 let $botonMenu = $("#boton-hamburguesa")
@@ -38,35 +34,43 @@ $botonMenu.addEventListener("click", () => {
   $modalBotones.classList.toggle("hidden")
 })
 
-// ===========================================
-
-// VISTAS
+// ==== vistas ==================================
 
 // secciones
 let $sectionVistaBalance = $("#vista-balance");
 let $sectionVistaCategorias = $("#vista-categorias");
 let $sectionVistaReportes = $("#vista-reportes");
-
 // botones para vistas
 let $btnVistaBalance = $$(".balance");
 let $btnVistaCategorias = $$(".categorias");
 let $btnVistaReportes = $$(".reportes")
 
 // cambiar vistas
+// funciones para mostrar y ocultar
+function mostrarElemento(selectors) {
+  for (const selector of selectors) {
+    selector.classList.remove("hidden");
+    selector.classList.add("flex");
+  }
+};
+function ocultarElemento(selectors) {
+  for (const selector of selectors) {
+    selector.classList.add("hidden");
+  }
+};
+//eventos click botones vistas
 $btnVistaBalance.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaBalance]);
     ocultarElemento([$sectionVistaReportes, $sectionVistaCategorias, $sectionNuevaOp, $modalBotones])
     });
 })
-
 $btnVistaCategorias.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaCategorias]);
     ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones])
   });
 })
-
 $btnVistaReportes.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaReportes]);
@@ -74,43 +78,22 @@ $btnVistaReportes.forEach(e => {
   });
 })
 
-const mostrarElemento = (selectors) => {
-  for (const selector of selectors) {
-    selector.classList.remove("hidden");
-    selector.classList.add("flex");
-  }
-};
-const ocultarElemento = (selectors) => {
-  for (const selector of selectors) {
-    selector.classList.add("hidden");
-  }
-};
 
-
-
-
-// ===========================================================
-
-
-
-
-// NUEVA OPERACION
+// ===== nueva operacion ============================================
 
 //array vacio para guardar operaciones
 let todasLasOp = []
-
 //boton nueva operacion
 let $botonNuevaOp = $$(".boton-nueva-op");
 //boton agregar
 let $botonAgregar = $("#boton-agregar")
-
 //vistas
 let $sectionNuevaOp = $("#nueva-op");
 let $cardSinOp = $("#card-sin-operaciones")
 let $vistaOpActivas = $("#card-operaciones-activas")
 let $formAgregar = $("#form-agregar")
 
-// funcionalidad de todos los botones "nueva operacion"
+// evento click boton nuevaOp
 $botonNuevaOp.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionNuevaOp]);
@@ -118,8 +101,7 @@ $botonNuevaOp.forEach(e => {
     });
 })
 
-// nueva operacion
-
+// formulario nueva operacion
 $formAgregar.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
@@ -138,8 +120,7 @@ $formAgregar.addEventListener("submit", (evento) => {
    
 })
 
-// mostrar las operaciones
-
+// mostrar operaciones
 const $tableOperaciones = $("#operacion")
 
 function pintarOperaciones(array) {
@@ -154,7 +135,6 @@ function pintarOperaciones(array) {
     </tr>` 
   }
 }
-
 //agregar y volver a "vistaBalance"
 $botonAgregar.addEventListener("click", () => {
   mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
