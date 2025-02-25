@@ -69,6 +69,7 @@ $btnVistaCategorias.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaCategorias]);
     ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones])
+    pintarCategorias(categorias)
   });
 })
 $btnVistaReportes.forEach(e => {
@@ -255,7 +256,33 @@ $botonAgregar.addEventListener("click", () => {
 //     }
 // })
 
+let $ulCategorias = $("#lista-categorias")
 
+function pintarCategorias(arrayCategorias) {
+  $ulCategorias.innerHTML = "";
+  for (const { id, nombre} of arrayCategorias) {
+    $ulCategorias.innerHTML += `<li>
+    <span> ${nombre}</span>
+    </li>`
+  }
+}
+
+// function pintarDatos(arrayPersonajes) {
+//   $main.innerHTML = "";
+//   for (const { image, name, species, house, gender, alive, alternate_names } of arrayPersonajes) {
+//     $main.innerHTML += `<div class="flex flex-col justify-center items-center border border-2 border-black rounded-xl w-5/6 md:w-5/12 lg:w-3/12 mx-8 my-2 h-72">
+//       <img src="${image}" class="h-24 w-24">
+//       <p>Nombre: ${capitalize(name)}</p>
+//       <div class="flex flex-row justify-around w-full flex-wrap">
+//         <p class="w-2/5">Especie: ${capitalize(species)}</p>
+//         <p class="w-2/5">Casa: ${capitalize(house)}</p>
+//         <p class="w-2/5">Genero: ${capitalize(gender)}</p>
+//         <p class="w-2/5">Vivo: ${alive ? "Si, esta vivito" : "No, se despidio"}</p>
+//       </div>
+//       <p>Nombres Alt: ${alternate_names.length > 0 ? alternate_names : "No tiene nombres alternativos"}</p>
+//     </div>`
+//   }
+// }
 
 
 
