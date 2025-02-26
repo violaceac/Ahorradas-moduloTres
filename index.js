@@ -93,6 +93,7 @@ let $sectionNuevaOp = $("#nueva-op");
 let $cardSinOp = $("#card-sin-operaciones")
 let $vistaOpActivas = $("#card-operaciones-activas")
 let $formAgregar = $("#form-agregar")
+let $formEditar = $("#form-editar")
 
 // evento click boton nuevaOp
 $botonNuevaOp.forEach(e => {
@@ -167,24 +168,33 @@ function agregarEventosEditYDelete() {
     })
   })
 
-  // $$arrayButtonsEdit.forEach(button => {
-  //   button.addEventListener("click", (e) => {
-  //     hideElement([$sectionViewHome, $sectionViewReporte, $("#form-create")])
-  //     showElement([$sectionViewVenta, $formEdit])
+///////
 
-  //     const datos = leerLS("operaciones")
-  //     const ventaBuscada = datos.find(elem => elem.id === e.target.id)
+let $descripcionEditar = $("descripcion-editar");
+let $montoEditar = $("monto-editar");
+let $selectTipoEditar = $("tipo-editar");
+let $selectCategoriaEditar = $("categoria-editar");
+let inputFechaEditar = $("fecha-editar");
+let $botonEditar = $("boton-editar");
+let $formEditar = $("form-editar");
 
-  //     $selectEditType.value = ventaBuscada.type
-  //     $inputEditValor.value = ventaBuscada.value
-  //     $inputEditFecha.value = ventaBuscada.date
-  //     $inputEditCantidad.value = ventaBuscada.quantity
 
-  //     $formEdit.id = ventaBuscada.id
-  //   })
-  // })
+  $$arrayButtonsEdit.forEach(button => {
+    button.addEventListener("click", (e) => {
+      ocultarElemento([$sectionVistaBalance, $formAgregar ])
+      mostrarElemento([$formEditar])
+
+      const datos = leerLS("operaciones")
+      const opBuscada = datos.find(elem => elem.id === e.target.id)
+
+      $descripcionEditar.value = opBuscada.value
+
+      $formEditar.id = opBuscada.id
+    })
+  })
 }
 
+///////
 
 //agregar y volver a "vistaBalance"
 $botonAgregar.addEventListener("click", () => {

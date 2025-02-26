@@ -202,6 +202,45 @@
                 </form>
             </div>
         </section>
+
+        <!--VISTA EDITAR OPERACION-->
+        <section class="hidden flex justify-around items-center" id="editar-op">
+            <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
+                <form id="form-editar">
+                    <div class="campo">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion-editar">
+                    </div>
+                    <div>
+                        <label for="monto">Monto</label>
+                        <input type="number" id="monto-editar">
+                    </div>
+                    <div>
+                        <label for="tipo">Tipo</label>
+                        <select name="tipo" id="tipo-editar">
+                            <option value="gasto" checked>Gasto</option>
+                            <option value="ganancia">Ganacia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="categoria">Categoría</label>
+                        <select name="categoria" class="categoria" id="categoria-editar">
+                            <option value="Servicios" id="servicios">Servicios</option>
+                            <option value="Salidas" id="salidas">Salidas</option>
+                            <option value="Educación" id="educacion">Educación</option>
+                            <option value="Transporte" id="transporte">Transporte</option>
+                            <option value="Trabajo" id="trabajo">Trabajo</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha-editar">
+                    </div>
+                    <button id="boton-cancelar">Cancelar</button>
+                    <button type="submit" id="boton-editar">Editar</button>
+                </form>
+            </div>
+        </section>
       
        <!-- vista categorias -->
         <section class="hidden" id="vista-categorias">
