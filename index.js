@@ -133,9 +133,59 @@ function pintarOperaciones(array) {
     <td>${operacion.monto} </td>
     <td>${operacion.categoria} </td>
     <td>${operacion.fecha} </td>
+    <td>
+      <button id="${operacion.id}" class="button-edit border border-black shadow bg-green-600">Editar</button>
+      <button id="${operacion.id}" class="button-delete border border-black shadow bg-red-600">Eliminar</button>
+    </td>
     </tr>` 
   }
+  agregarEventosEditYDelete()
 }
+
+///////// Prueba botón eliminar OK
+
+function quitarOperacion(idOperacion) {
+  const datos = leerLS("operaciones")
+  const nuevoArray = datos.filter(operacion => operacion.id !== idOperacion)
+
+  guardarEnLS("operaciones", nuevoArray)
+
+  return nuevoArray
+} 
+
+////////
+
+function agregarEventosEditYDelete() {
+  const $$arrayButtonsDelete = $$(".button-delete")
+  const $$arrayButtonsEdit = $$(".button-edit")
+
+  $$arrayButtonsDelete.forEach(button => {
+    button.addEventListener("click", (e) => {
+      console.log(e.target.id)
+      const nuevoArray = quitarOperacion(e.target.id)
+      pintarOperaciones(nuevoArray)
+    })
+  })
+
+  // $$arrayButtonsEdit.forEach(button => {
+  //   button.addEventListener("click", (e) => {
+  //     hideElement([$sectionViewHome, $sectionViewReporte, $("#form-create")])
+  //     showElement([$sectionViewVenta, $formEdit])
+
+  //     const datos = leerLS("operaciones")
+  //     const ventaBuscada = datos.find(elem => elem.id === e.target.id)
+
+  //     $selectEditType.value = ventaBuscada.type
+  //     $inputEditValor.value = ventaBuscada.value
+  //     $inputEditFecha.value = ventaBuscada.date
+  //     $inputEditCantidad.value = ventaBuscada.quantity
+
+  //     $formEdit.id = ventaBuscada.id
+  //   })
+  // })
+}
+
+
 //agregar y volver a "vistaBalance"
 $botonAgregar.addEventListener("click", () => {
   mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
