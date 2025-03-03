@@ -35,7 +35,7 @@
 
 
 <body class="bg-slate-50">
-    <header class="w-full h-12 flex justify-between items-center p-1 pl-4 pr-4 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg">
+    <header class="w-full h-12 flex justify-between items-center p-1 pl-4 pr-4 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg ">
         <h1>AhorrADAs</h1>
         <button><i id="boton-hamburguesa" class="fa-solid fa-bars"></i></button>
         <div id="botones-hamburguesa" class="hidden bg-sky-500 p-0 p-0 absolute top-12 right-0 flex flex-col justify-around items-start ">
@@ -54,33 +54,33 @@
         <!-- vista balance -->
         <section class="flex flex-col items-center" id="vista-balance"> 
             <!-- BALANCE -->
-            <div id="card-balance" class="w-11/12 h-72 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
-                                <h2>Balance</h2>
+            <div id="card-balance" class="w-11/12 h-72 p-2.5 mt-14 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
+                                <h2 class="text-xl font-bold text-gray-800">Balance</h2>
                                 <!-- MONTO GANANCIAS -->
                                 <div class="flex justify-between">
-                                    <p>Ganancias</p>
-                                    <p class="monto-ganancia">$0</p>
+                                    <p class="text-stone-700 text-md">Ganancias</p>
+                                    <p class="monto-ganancia text-green-500">$ 0</p>
                                 </div>
                                 <!-- MONTO GASTOS -->
                                 <div class="flex justify-between">
-                                    <p>Gastos</p>
-                                    <p class="monto-gastos">$0</p>
+                                    <p class="text-stone-700 text-md">Gastos</p>
+                                    <p class="monto-gastos text-red-500" >$ 0</p>
                                 </div>
                                 <!-- MONTO TOTAL -->
                                 <div class="flex justify-between">
-                                    <h3>Total</h3>
-                                    <p class="monto-total">$0</p>
+                                    <h3 class="text-stone-700 text-lg font-semibold">Total</h3>
+                                    <p class="monto-total text-lg font-bold">$ 0</p>
                                 </div>
             </div> <!-- FIN BALANCE -->
                            
             <!-- FILTROS -->
-            <div id="card-filtros" class="w-11/12 h-96 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
+            <div id="card-filtros" class="w-11/12 h-96 p-2.5 mt-14 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
                 
                                 <div class="p-2 flex justify-between"> <!-- TITULO Y BOTON-->
-                                    <h2>Filtros</h2> <!-- TITULO -->
+                                    <h2 class="text-xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
                 
                                     <!-- BOTON OCULTAR FILTROS -->
-                                    <button>Ocultar filtros</button>
+                                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
                                 </div>
                                 <!-- SELECT TIPO-->
                                 <div class="h-14 p-1 flex flex-col justify-between" id="campo-tipo">
@@ -124,12 +124,12 @@
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
-            <div id="card-operaciones" class="w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg">
+            <div id="card-operaciones" class="w-11/12 h-[450px] p-2.5 mt-14 border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50	">
                  <!--VISTA SIN OPERACIONES-->
                 <div class=" flex flex-col items-center" id="card-sin-operaciones">
                     <div class="contenedor-tituloYBoton"> 
                         <!--TITULO-->
-                        <h2>Operaciones</h2>
+                        <h2 class="text-xl font-bold text-gray-800">Operaciones</h2>
                         <!-- BOTON NUEVA OPERACION-->
                         <button class="boton-nueva-op">+ Nueva operación</button>
                     </div>
@@ -165,11 +165,11 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-        <section class="hidden flex justify-around items-center" id="nueva-op">
+        <section class="hidden flex justify-around items-center rounded-2xl shadow-lg bg-white stroke-neutral-50" id="nueva-op">
             <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
                 <form id="form-agregar">
                     <div class="campo">
-                    <label for="descripcion">Descripción</label>
+                    <label for="descripcion" >Descripción</label>
                     <input type="text" id="descripcion">
                     </div>
                     <div>
@@ -204,7 +204,7 @@
         </section>
       
        <!-- vista categorias -->
-        <section class="hidden" id="vista-categorias">
+        <section class="hidden rounded-2xl border-1 shadow-md stroke-gray-50" id="vista-categorias">
             <div><!-- contenedor general -->
                 <h2>Categorías</h2>
                 <label>Nombre de la categoría</label>
@@ -269,7 +269,7 @@
 
 
         <!-- vista reportes -->
-        <section class="hidden flex flex-col items-center" id="vista-reportes">
+        <section class="hidden flex flex-col items-center rounded-2xl shadow-lg bg-white stroke-neutral-50" id="vista-reportes">
             
             <!--card sin reportes-->
             <div class="hidden w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col items-center"> 
