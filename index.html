@@ -59,17 +59,17 @@
                                 <!-- MONTO GANANCIAS -->
                                 <div class="flex justify-between">
                                     <p>Ganancias</p>
-                                    <p class="monto-ganancia">$0</p>
+                                    <span id="total-ganancia">$0</span>
                                 </div>
                                 <!-- MONTO GASTOS -->
                                 <div class="flex justify-between">
                                     <p>Gastos</p>
-                                    <p class="monto-gastos">$0</p>
+                                    <span id="total-gastos">$0</span>
                                 </div>
                                 <!-- MONTO TOTAL -->
                                 <div class="flex justify-between">
                                     <h3>Total</h3>
-                                    <p class="monto-total">$0</p>
+                                    <span id="monto-total">$0</span>
                                 </div>
             </div> <!-- FIN BALANCE -->
                            
@@ -80,7 +80,7 @@
                                     <h2>Filtros</h2> <!-- TITULO -->
                 
                                     <!-- BOTON OCULTAR FILTROS -->
-                                    <button>Ocultar filtros</button>
+                                    <button id="ocultar-filtros" >Ocultar filtros</button>
                                 </div>
                                 <!-- SELECT TIPO-->
                                 <div class="h-14 p-1 flex flex-col justify-between" id="campo-tipo">
@@ -107,18 +107,19 @@
                                 <!-- INPUT FECHA -->
                                 <div class="h-14 p-1 flex flex-col justify-between" id="campo-fecha">
                                     <label>Desde</label>
-                                    <input type="date">
+                                    <input type="date" id="desde-fecha">
                                 </div>
                                 <!-- SELECT ORDENAR POR-->
                                 <div class="h-14 p-1 flex flex-col justify-between" id="campo-orden">
                                     <label>Ordenar por</label>
                                     <select id="orden">
-                                        <option value="mas-reciente"></option>
-                                        <option value="menos-reciente"></option>
-                                        <option value="mayor-monto"></option>
-                                        <option value="menor-monto"></option>
-                                        <option value="a-to-z"></option>
-                                        <option value="z-to-a"></option>
+                                        <option value="Ninguno">Ninguno</option>
+                                        <option value="mas-reciente">Más reciente</option>
+                                        <option value="menos-reciente">Menos reciente</option>
+                                        <option value="mayor-monto">Mayor monto</option>
+                                        <option value="menor-monto">Menor monto</option>
+                                        <option value="a-to-z">A-Z</option>
+                                        <option value="z-to-a">Z-A</option>
                                     </select>
                                 </div>
             </div> <!-- FIN FILTROS -->
@@ -167,7 +168,7 @@
         <!--VISTA NUEVA OPERACION-->
         <section class="hidden flex justify-around items-center" id="nueva-op">
             <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
-                <form id="form-agregar">
+                <form id="form-agregar" class="flex-col">
                     <div class="campo">
                     <label for="descripcion">Descripción</label>
                     <input type="text" id="descripcion">
@@ -197,16 +198,18 @@
                         <label for="fecha">Fecha</label>
                         <input type="date" id="fecha">
                     </div>
-                    <button id="boton-cancelar">Cancelar</button>
-                    <button type="submit" id="boton-agregar">Agregar</button>
+                    <div class="contenedor-botones">
+                        <button id="boton-cancelar">Cancelar</button>
+                        <button type="submit" id="boton-agregar">Agregar</button>
+                    </div>
                 </form>
             </div>
         </section>
 
         <!--VISTA EDITAR OPERACION-->
-        <section class="hidden flex justify-around items-center" id="editar-op">
+        <section class="hidden justify-around items-center" id="editar-op">
             <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
-                <form id="form-editar">
+                <form class="form-editar">
                     <div class="campo">
                     <label for="descripcion">Descripción</label>
                     <input type="text" id="descripcion-editar">
@@ -218,7 +221,8 @@
                     <div>
                         <label for="tipo">Tipo</label>
                         <select name="tipo" id="tipo-editar">
-                            <option value="gasto" checked>Gasto</option>
+                            <option value="All" default>Todos</option>
+                            <option value="gasto">Gasto</option>
                             <option value="ganancia">Ganacia</option>
                         </select>
                     </div>
@@ -237,7 +241,7 @@
                         <input type="date" id="fecha-editar">
                     </div>
                     <button id="boton-cancelar">Cancelar</button>
-                    <button type="submit" id="boton-editar">Editar</button>
+                    <button type="submit" id="boton-editar">Agregar edición</button>
                 </form>
             </div>
         </section>
@@ -246,21 +250,17 @@
         <section class="hidden" id="vista-categorias">
             <div><!-- contenedor general -->
                 <h2>Categorías</h2>
-                <label>Nombre de la categoría</label>
+                <label>Nombre</label>
                 <div><!-- input + boton -->
-                    <div class="inputCategorias"><!-- contenedor general -->
-                        <input class="input" type="text" name id="inputt-categorias">
-                    </div>
-                    <div class="botonDeAgregar"><!-- boton agregar -->
-                        <button id="agregar-categoria-boton">Agregar</button>
+                    <div class="contenedor-input-boton"><!-- contenedor general -->
+                        <input class="input" type="text" name id="input-categoria">
+                        <button id="agregar-categoria" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
                     </div>
                 </div>
                 <div><!-- categorias -->
                     <ul id="lista-categorias">
-                     
                     </ul>
                 </div>
-                <button class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
             </div>
 
         </section> <!-- fin vista categorias-->
