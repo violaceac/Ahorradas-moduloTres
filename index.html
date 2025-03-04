@@ -54,30 +54,30 @@
         <!-- vista balance -->
         <section class="flex flex-col items-center" id="vista-balance"> 
             <!-- BALANCE -->
-            <div id="card-balance" class="w-11/12 h-72 p-2.5 mt-14 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
-                                <h2 class="text-xl font-bold text-gray-800">Balance</h2>
+            <div id="card-balance" class="w-11/12 h-48 px-4	py-4 mt-6	m-0	 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
+                                <h2 class="text-2xl font-bold text-gray-800 m-0	">Balance</h2>
                                 <!-- MONTO GANANCIAS -->
-                                <div class="flex justify-between">
+                                <div class="flex justify-between ">
                                     <p class="text-stone-700 text-md">Ganancias</p>
-                                    <p class="monto-ganancia text-green-500">$ 0</p>
+                                    <span id="total-ganancia" class="monto-ganancia text-green-500">$ 0</span>
                                 </div>
                                 <!-- MONTO GASTOS -->
                                 <div class="flex justify-between">
                                     <p class="text-stone-700 text-md">Gastos</p>
-                                    <p class="monto-gastos text-red-500" >$ 0</p>
+                                    <span id="total-gastos" class="monto-gastos text-red-500" >$ 0</span>
                                 </div>
                                 <!-- MONTO TOTAL -->
                                 <div class="flex justify-between">
                                     <h3 class="text-stone-700 text-lg font-semibold">Total</h3>
-                                    <p class="monto-total text-lg font-bold">$ 0</p>
+                                    <span id="monto-total" class="monto-total text-lg font-bold text-stone-700">$ 0</span>
                                 </div>
             </div> <!-- FIN BALANCE -->
                            
             <!-- FILTROS -->
-            <div id="card-filtros" class="w-11/12 h-96 p-2.5 mt-14 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
+            <div id="card-filtros" class="w-11/12 h-96 px-4 py-4 mt-6 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
                 
                                 <div class="p-2 flex justify-between"> <!-- TITULO Y BOTON-->
-                                    <h2 class="text-xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
+                                    <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
                 
                                     <!-- BOTON OCULTAR FILTROS -->
                                     <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
@@ -124,9 +124,9 @@
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
-            <div id="card-operaciones" class="w-11/12 h-[450px] p-2.5 mt-14 border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50	">
+            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4	mt-6	 border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50">
                  <!--VISTA SIN OPERACIONES-->
-                <div class=" flex flex-col items-center" id="card-sin-operaciones">
+                <div class="flex flex-col justify-around" id="card-sin-operaciones">
                     <div class="contenedor-tituloYBoton"> 
                         <!--TITULO-->
                         <h2 class="text-xl font-bold text-gray-800">Operaciones</h2>
@@ -165,7 +165,7 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-        <section class="hidden flex justify-around items-center rounded-2xl shadow-lg bg-white stroke-neutral-50" id="nueva-op">
+        <section class="hidden flex justify-around items-center px-4 py-4 mt-6	rounded-2xl shadow-lg bg-white stroke-neutral-50" id="nueva-op">
             <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
                 <form id="form-agregar">
                     <div class="campo">
@@ -204,7 +204,7 @@
         </section>
       
        <!-- vista categorias -->
-        <section class="hidden rounded-2xl border-1 shadow-md stroke-gray-50" id="vista-categorias">
+        <section class="hidden rounded-2xl border-1 shadow-md stroke-gray-50 px-4	mt-6	py-4" id="vista-categorias">
             <div><!-- contenedor general -->
                 <h2>Categorías</h2>
                 <label>Nombre de la categoría</label>
@@ -269,7 +269,7 @@
 
 
         <!-- vista reportes -->
-        <section class="hidden flex flex-col items-center rounded-2xl shadow-lg bg-white stroke-neutral-50" id="vista-reportes">
+        <section class="hidden flex flex-col items-center rounded-2xl shadow-lg bg-white stroke-neutral-50 mt-6	 px-4	py-4" id="vista-reportes">
             
             <!--card sin reportes-->
             <div class="hidden w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col items-center"> 
