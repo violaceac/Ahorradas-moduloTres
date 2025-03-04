@@ -103,7 +103,7 @@
                                 <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-categoria">
                                     <label class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
                                     <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
-                                        <select id="categoria" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                                        <select id="categoria" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700">
                                             <option value="todas">Todas</option>
                                             <option value="comida">Comida</option>
                                             <option value="servicios">Servicios</option>
@@ -125,17 +125,25 @@
                                     <input type="date" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer">
                                  </div>
 
-                                 <!-- SELECT ORDENAR POR-->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-orden">
-                                    <label>Ordenar por</label>
-                                    <select id="orden">
-                                        <option value="mas-reciente"></option>
-                                        <option value="menos-reciente"></option>
-                                        <option value="mayor-monto"></option>
-                                        <option value="menor-monto"></option>
-                                        <option value="a-to-z"></option>
-                                        <option value="z-to-a"></option>
-                                    </select>
+                                <!-- SELECT ORDENAR POR-->
+                                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0 py-0">
+                                    <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
+                                    <div class="relative w-full">
+                                        <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                                            <option value="mas-reciente"></option>
+                                            <option value="menos-reciente"></option>
+                                            <option value="mayor-monto"></option>
+                                            <option value="menor-monto"></option>
+                                            <option value="a-to-z"></option>
+                                            <option value="z-to-a"></option>
+                                        </select>
+
+                                        <!-- Ícono de despliegue -->
+                                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </div>
                                 </div>
             </div> <!-- FIN FILTROS -->
             
