@@ -148,7 +148,7 @@
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
-            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4 mt-6  border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50">
+            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4 mt-6  border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50 mb-10">
                  <!--VISTA SIN OPERACIONES-->
                 <div class="flex flex-col justify-around w-full w-auto" id="card-sin-operaciones">
                     <div class="contenedor-tituloYBoton"> 
@@ -192,9 +192,9 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-        <section class="hidden flex justify-around items-center px-4 py-4 mt-6	rounded-2xl shadow-lg bg-white stroke-neutral-50" id="nueva-op">
-            <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
-                <form id="form-agregar">
+        <section id="nueva-op" class="hidden w-11/12 max-w-md h-auto p-6 mt-6 border rounded-2xl flex flex-col justify-around shadow-lg bg-white">
+            <div class="w-full" >
+                <form id="form-agregar" class="flex flex-col space-y-4">
                     <div class="campo">
                     <label for="descripcion" >Descripción</label>
                     <input type="text" id="descripcion">
