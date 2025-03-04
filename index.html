@@ -126,7 +126,7 @@
                                  </div>
 
                                 <!-- SELECT ORDENAR POR-->
-                                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0 py-0">
+                                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 px-0 py-0 mb-0">
                                     <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
                                     <div class="relative w-full">
                                         <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
@@ -148,18 +148,21 @@
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
-            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4	mt-6	 border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50">
+            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4 mt-6  border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50">
                  <!--VISTA SIN OPERACIONES-->
-                <div class="flex flex-col justify-around" id="card-sin-operaciones">
+                <div class="flex flex-col justify-around w-full w-auto" id="card-sin-operaciones">
                     <div class="contenedor-tituloYBoton"> 
                         <!--TITULO-->
-                        <h2 class="text-xl font-bold text-gray-800">Operaciones</h2>
+                        <h2 class="text-2xl font-bold text-gray-800">Operaciones</h2>
                         <!-- BOTON NUEVA OPERACION-->
-                        <button class="boton-nueva-op">+ Nueva operación</button>
+                        <button class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">+ Nueva operación</button>
                     </div>
-                    <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero">
-                    <h3>Sin resultados</h3>
-                    <p>Cambia los filtros o agrega operaciones</p>
+            
+                    <div class="flex flex-col items-center text-center">
+                        <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero" class="w-48 h-auto mb-4">
+                        <h3 class="text-lg font-semibold text-cyan-600">Sin resultados</h3>
+                        <p class="text-gray-600">Cambia los filtros o agrega operaciones</p>
+                    </div>
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
