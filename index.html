@@ -57,42 +57,51 @@
             <div id="card-balance" class="w-11/12 h-auto	p-4	 px-4	py-4 p-0 mt-6  border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white stroke-neutral-50">
                                 <h2 class="text-2xl font-bold text-gray-800 p-0 m-0	">Balance</h2>
                                 <!-- MONTO GANANCIAS -->
-                                <div class="flex justify-between py-2		">
+                                <div class="flex justify-between pb-2	pt-4">
                                     <p class="text-stone-700 text-md">Ganancias</p>
                                     <span id="total-ganancia" class="monto-ganancia text-green-500">$ 0</span>
                                 </div>
                                 <!-- MONTO GASTOS -->
-                                <div class="flex justify-between py-2		">
+                                <div class="flex justify-between py-2">
                                     <p class="text-stone-700 text-md">Gastos</p>
                                     <span id="total-gastos" class="monto-gastos text-red-500" >$ 0</span>
                                 </div>
                                 <!-- MONTO TOTAL -->
-                                <div class="flex justify-between pt-2			">
+                                <div class="flex justify-between pt-4">
                                     <h3 class="text-stone-700 text-lg font-semibold">Total</h3>
                                     <span id="monto-total" class="monto-total text-lg font-bold text-stone-700">$ 0</span>
                                 </div>
             </div> <!-- FIN BALANCE -->
                            
             <!-- FILTROS -->
-            <div id="card-filtros" class="w-11/12 h-96 px-4 py-4 mt-6 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
+            <div id="card-filtros" class="w-11/12 h-auto px-4 py-4 mt-6 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white	stroke-neutral-50">
                 
-                                <div class="p-2 flex justify-between"> <!-- TITULO Y BOTON-->
+                                <div class="p-2 flex justify-between px-0 py-0	"> <!-- TITULO Y BOTON-->
                                     <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
                 
                                     <!-- BOTON OCULTAR FILTROS -->
                                     <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
                                 </div>
                                 <!-- SELECT TIPO-->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-tipo">
-                                    <label>Tipo</label>
-                                    <select id="tipo">
-                                        <option value="todos">Todos</option>
-                                        <option value="gasto">Gasto</option>
-                                        <option value="ganancia">Ganancia</option>
-                                    </select>
+                                <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4" id="campo-tipo">
+                                    <label class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
+                                    
+                                    <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
+                                        <select id="tipo" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                                            <option value="todos">Todos</option>
+                                            <option value="gasto">Gasto</option>
+                                            <option value="ganancia">Ganancia</option>
+                                        </select>
+                                        <!-- Ícono de despliegue -->
+                                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </div>
                                 </div>
+                                
                                 <!-- SELECT CATEGORIA -->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-categoria">
+                                <div class="h-14 p-1 flex flex-col justify-between mb-4	" id="campo-categoria">
                                     <label>Categoría</label>
                                     <select id="categoria">
                                         <option value="todas">Todas</option>
@@ -105,7 +114,7 @@
                                     </select>
                                 </div>
                                 <!-- INPUT FECHA -->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-fecha">
+                                <div class="h-14 p-1 flex flex-col justify-between mb-4	" id="campo-fecha">
                                     <label>Desde</label>
                                     <input type="date">
                                 </div>
