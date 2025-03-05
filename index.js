@@ -75,7 +75,7 @@ $btnVistaCategorias.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaCategorias, $vistaListaCategorias]);
     ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones, $vistaEditarCat])
-    pintarCategorias(categorias)
+    pintarCategorias()
   });
 })
 $btnVistaReportes.forEach(e => {
@@ -403,34 +403,40 @@ $selectOrden.addEventListener("input", () => {
 
 //==== VISTA CATEGORIAS =================================
 
-const categorias = [
+const categoriasIniciales = [
   {
       id: crypto.randomUUID(),
-      nombre:"Comida"
+      nombre:"comida"
   },
   {
       id: crypto.randomUUID(),
-      nombre: "Servicios",
+      nombre: "servicios",
   },
   {
       id: crypto.randomUUID(),
-      nombre: "Salidas",
+      nombre: "salidas",
   },
   {
       id: crypto.randomUUID(),
-      nombre: "Educación",
+      nombre: "educación",
   },
   {
       id: crypto.randomUUID(),
-      nombre: "Transporte",
+      nombre: "transporte",
   },
   {
       id: crypto.randomUUID(),
-      nombre: "Trabajo",
+      nombre: "trabajo",
   }
 ]
 
-/////
+// Función para inicializar categorías si no existen
+function inicializarCategorias() {
+  const categorias = leerLS("categorias");
+  if(!categorias || categorias.length === 0) {
+    guardarEnLS("categorias", categoriasIniciales);
+  }
+}
 
 //captura de elementos contenedores de categorias
 let $ulCategorias = $("#lista-categorias");
@@ -520,7 +526,7 @@ function editDeleteCategorias() {
 
 //////
 
-  //editar categoria
+  //ir a editar categoria
   $$arrayButtonsEditCat.forEach(button => {
     button.addEventListener("click", (e) => {
 
@@ -538,42 +544,64 @@ function editDeleteCategorias() {
   })
 }
 
+function actualizarCategoria(categoriaEditada, todasLasCategorias) {
+
+  const categoriasActualizadas = todasLasCategorias.map(categoria => {
+    
+    if (categoria.id === categoriaEditada.id) {
+      return { ...categoriaEditada };
+    }
+   
+    return categoria;
+  });
+  
+  return categoriasActualizadas;
+}
+
 let $inputNombreCat = $("#nombre-cat");
 let catBuscada
 let $btnCancelarEditarCat = $("#boton-cancelar-editar-cat");
 let $btnAgregarEdicion = $("#boton-agregar-edicion-cat");
 
+//agregar la edicion de la categoria
 $btnAgregarEdicion.addEventListener("click", () => {
   let catEditada = catBuscada;
-
-  let todasLasCat = leerLS("categorias")
-
-  todasLasCat.pop(catBuscada)
-
-  catEditada.nombre = $inputNombreCat.value 
+  catEditada.nombre = $inputNombreCat.value;
   
-  todasLasCat.push(catEditada)
-
-
-  guardarEnLS("categorias", todasLasCat)
-  pintarCategorias("categorias")
-
-
-  /////
-
+  let todasLasCat = leerLS("categorias");
+  
+  const categoriasActualizadas = actualizarCategoria(catEditada, todasLasCat);
+  
+  guardarEnLS("categorias", categoriasActualizadas);
+  
+  // Actualizar las operaciones que usan esta categoría
   let operaciones = leerLS("operaciones");
   
+  // Obtener el valor de categoría anterior (para buscar en operaciones)
+  const valorCategoriaAnterior = catBuscada.nombre.trim().replace(/\s+/g, "-").toLowerCase();
+  const valorCategoriaNueva = catEditada.nombre.trim().replace(/\s+/g, "-").toLowerCase();
+  
+  // Actualizar todas las operaciones que usan esta categoría pero no lo hace, consologueamos las operaciones despues de esto y las muestra tal cual asi que en guardar en LS se esta guardando como el array original 
 
-  operaciones = operaciones.map((op) => op.categoria === catEditada.nombre ? { ...op, categoria: catEditada.nombre } : op);
+  operaciones = operaciones.map((op) => 
+    op.categoria === valorCategoriaAnterior ? { ...op, categoria: valorCategoriaNueva } : op
+  );
 
+
+  
   guardarEnLS("operaciones", operaciones);
   
   pintarOperaciones(operaciones);
+  
+
+  
 
   ocultarElemento([$vistaEditarCat]);
-  mostrarElemento([$vistaListaCategorias])
-
-})
+  mostrarElemento([$vistaListaCategorias]);
+  
+  // Actualizar la lista de categorías en la interfaz
+  pintarCategorias();
+});
 
   $btnCancelarEditarCat.addEventListener("click", () => {
     ocultarElemento([$vistaEditarCat]);
@@ -605,67 +633,6 @@ $btnAgregarCategoria.addEventListener("click", () => {
 })
 
 
-/////////// trabajando en esto de eliminar la operacion cuando quito la categoria del array
-
-// function actualizarCategorias() {
-//   let datos = leerLS("categorias")
-
-//   for (const categoria of datos) {
-//     pintarCategorias()
-//   }
-// /////
-//   function quitarOperacion(idOperacion) {
-//     const datos = leerLS("operaciones")
-//     const nuevoArray = datos.filter(operacion => operacion.id !== idOperacion)
-  
-//     todasLasOp = nuevoArray; 
-  
-//     guardarEnLS("operaciones", todasLasOp);
-  
-//     return todasLasOp;
-//   } 
-
-// }
-//////////
-
-
-
-//tienen que actualizarse las categorias en el select, puede hacerse por fuera con una funcion y ejecutarla en este click, puede reutilizarse para cuando elimine o edite alguna categoria
-
-// + editar categoria
-//      - actualizar el localstorage con el nombre nuevo, esto probablemente haga que todas cambien de valor
-//      - cambiar el nombre de la  categoria en la operacion
-//      - actualizar el select
-
-// + eliminar categoria
-//      - actualizar el localstorage con la categoria eliminada
-//      - eliminar las operaciones que estaban en esa categoria y volver a pintarOperaciones()
-//      - actualizar el select
-
-
-
-
-
-// $formAgregar.addEventListener("submit", (evento) => {
-//   evento.preventDefault();
-
-//   const nuevaOp = {
-//     id: crypto.randomUUID(),
-//     descripcion: evento.target[0].value,
-//     monto: Number(evento.target[1].value),
-//     tipo: evento.target[2].value,
-//     categoria: evento.target[3].value,
-//     fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
-//   }
-
-//   todasLasOp.push(nuevaOp)
-//   guardarEnLS("operaciones", todasLasOp)
-//   pintarOperaciones(todasLasOp)
-//   hayOp()
-//   actualizarBalance()
-   
-// })
-
 
 
 //////////////////
@@ -675,6 +642,7 @@ $btnAgregarCategoria.addEventListener("click", () => {
 ////////////
 
 window.onload = () => {
+  inicializarCategorias();
   todasLasOp = leerLS("operaciones")
   pintarOperaciones(todasLasOp)
   pintarCategorias()
