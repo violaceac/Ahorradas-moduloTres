@@ -1,6 +1,10 @@
 const categorias = [
     {
         id: crypto.randomUUID(),
+        nombre:"Comida"
+    },
+    {
+        id: crypto.randomUUID(),
         nombre: "Servicios",
     },
     {
