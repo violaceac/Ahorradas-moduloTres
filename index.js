@@ -1,5 +1,6 @@
+// import categorias from "./categorias.js"
+
 // funciones de LocalStorage
-import categorias from "./categorias.js";
 
 function guardarEnLS(key, data) {
   localStorage.setItem(key, JSON.stringify(data))
@@ -8,6 +9,7 @@ function leerLS(key) {
   const datos = JSON.parse(localStorage.getItem(key))
   return datos ? datos : [];
 } 
+
 
 
 // ==== selectores =============================
@@ -40,10 +42,12 @@ $botonMenu.addEventListener("click", () => {
 let $sectionVistaBalance = $("#vista-balance");
 let $sectionVistaCategorias = $("#vista-categorias");
 let $sectionVistaReportes = $("#vista-reportes");
+let $vistaListaCategorias = $("#vista-lista-categorias")
+let $vistaEditarCat = $("#vista-editar-cat");
 // botones para vistas
 let $btnVistaBalance = $$(".balance");
 let $btnVistaCategorias = $$(".categorias");
-let $btnVistaReportes = $$(".reportes")
+let $btnVistaReportes = $$(".reportes");
 
 // cambiar vistas
 // funciones para mostrar y ocultar
@@ -63,12 +67,14 @@ $btnVistaBalance.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaBalance]);
     ocultarElemento([$sectionVistaReportes, $sectionVistaCategorias, $sectionNuevaOp, $modalBotones, $sectionEditarOp])
+    hayOp()
+    actualizarBalance()
     });
 })
 $btnVistaCategorias.forEach(e => {
   e.addEventListener("click", () => {
-    mostrarElemento([$sectionVistaCategorias]);
-    ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones])
+    mostrarElemento([$sectionVistaCategorias, $vistaListaCategorias]);
+    ocultarElemento([$sectionVistaBalance, $sectionVistaReportes, $sectionNuevaOp, $modalBotones, $vistaEditarCat])
     pintarCategorias(categorias)
   });
 })
@@ -216,7 +222,6 @@ function agregarEventosEditYDelete() {
   let $descripcionEditar = $("#descripcion-editar");
   let $montoEditar = $("#monto-editar");
   let $selectTipoEditar = $("#tipo-editar");
-  let $selectCategoriaEditar = $("#categoria-editar");
   let $inputFechaEditar = $("#fecha-editar");
 
 
@@ -224,6 +229,8 @@ function agregarEventosEditYDelete() {
     button.addEventListener("click", (e) => {
       ocultarElemento([$sectionVistaBalance, $formAgregar])
       mostrarElemento([$sectionEditarOp])
+      console.log($selectCategoriaEditar)
+
 
       const datos = leerLS("operaciones");
       const opBuscada = datos.find(elem => elem.id === e.target.id);
@@ -233,6 +240,7 @@ function agregarEventosEditYDelete() {
       $selectTipoEditar.value = opBuscada.tipo;
       $selectCategoriaEditar.value = opBuscada.categoria;
       $inputFechaEditar.value = opBuscada.fecha;
+      console.log($selectCategoriaEditar.value)
 
       $formEditar.id = opBuscada.id
     })
@@ -394,27 +402,184 @@ $selectOrden.addEventListener("input", () => {
 
 
 //==== VISTA CATEGORIAS =================================
-/////
-//captura del elemento contenedor de categorias
-let $ulCategorias = $("#lista-categorias")
 
-//mostrar las categorias existentes
+const categorias = [
+  {
+      id: crypto.randomUUID(),
+      nombre:"Comida"
+  },
+  {
+      id: crypto.randomUUID(),
+      nombre: "Servicios",
+  },
+  {
+      id: crypto.randomUUID(),
+      nombre: "Salidas",
+  },
+  {
+      id: crypto.randomUUID(),
+      nombre: "Educación",
+  },
+  {
+      id: crypto.randomUUID(),
+      nombre: "Transporte",
+  },
+  {
+      id: crypto.randomUUID(),
+      nombre: "Trabajo",
+  }
+]
+
+/////
+
+//captura de elementos contenedores de categorias
+let $ulCategorias = $("#lista-categorias");
+let $selectCategoriasNuevaOp =$("#categorias-nueva-op");
+let $selectCategoriaEditar = $("#categorias-editar");
+
+
+//mostrar las categorias existentes en section selects y filtros
 function pintarCategorias() {
   let todasLasCat = leerLS("categorias")
 
   $ulCategorias.innerHTML = "";
+  $selectCategoriasNuevaOp.innerHTML = "";
+  $selectCategoriaEditar.innerHTML = "";
+  $selectFiltroCategoria.innerHTML = "";
 
   for (const {id, nombre} of todasLasCat) {
+
+
+    let valueCat = nombre.trim().replace(/\s+/g, "-").toLowerCase();
+
+    $selectCategoriasNuevaOp.innerHTML += `
+    <option value="${valueCat}">${nombre}</option>
+    `
+
+    $selectCategoriaEditar.innerHTML += `
+    <option value="${valueCat}">${nombre}</option>
+    `
+
+    $selectFiltroCategoria.innerHTML += `
+    <option value="${valueCat}">${nombre}</option>
+    `
+
     $ulCategorias.innerHTML += `<li>
     <span> ${nombre}</span>
     <div>
-      <button id="${id}" class="button-edit border border-black shadow bg-green-600">Editar</button>
-      <button id="${id}" class="button-delete border border-black shadow bg-red-600">Eliminar</button>
+      <button id="${id}" class="button-edit-cat border border-black shadow bg-green-600">Editar</button>
+      <button id="${id}" class="button-delete-cat border border-black shadow bg-red-600">Eliminar</button>
     </div>
     </li>`
   }
-  guardarEnLS("categorias", todasLasCat)
+  editDeleteCategorias()
+
 }
+
+
+function quitarCategoria(idCategoria) {
+  const datos = leerLS("categorias")
+  const nuevoArray = datos.filter(categoria => categoria.id !== idCategoria)
+
+
+  guardarEnLS("categorias", nuevoArray);
+
+  return nuevoArray;
+} 
+
+
+function quitarOpPorCategoria(categoriaEliminada) {
+  const datos = leerLS("operaciones");
+
+  const nuevoArray = datos.filter(operacion => operacion.categoria !== categoriaEliminada);
+
+  guardarEnLS("operaciones", nuevoArray);
+  return nuevoArray
+}
+
+
+function editDeleteCategorias() {
+  let $$arrayButtonsDeleteCat = $$(".button-delete-cat")
+  let $$arrayButtonsEditCat = $$(".button-edit-cat")
+
+  //eliminar categoria
+  $$arrayButtonsDeleteCat.forEach(button => {
+    button.addEventListener("click", (e) => {
+      const datos = leerLS("categorias")
+      const categoriaEliminada = datos.find(cat => cat.id === e.target.id)?.nombre;
+      
+      const nuevoArrayCategorias = quitarCategoria(e.target.id)
+      pintarCategorias(nuevoArrayCategorias)
+
+      const arraySinOp = quitarOpPorCategoria(categoriaEliminada)
+      pintarOperaciones(arraySinOp)
+      
+    })
+  })
+
+
+//////
+
+  //editar categoria
+  $$arrayButtonsEditCat.forEach(button => {
+    button.addEventListener("click", (e) => {
+
+      ocultarElemento([$vistaListaCategorias])
+      mostrarElemento([$vistaEditarCat])
+
+
+      const datos = leerLS("categorias");
+      catBuscada = datos.find(elem => elem.id === e.target.id);
+
+      $inputNombreCat.value = catBuscada.nombre;
+
+      console.log(catBuscada)
+    })
+  })
+}
+
+let $inputNombreCat = $("#nombre-cat");
+let catBuscada
+let $btnCancelarEditarCat = $("#boton-cancelar-editar-cat");
+let $btnAgregarEdicion = $("#boton-agregar-edicion-cat");
+
+$btnAgregarEdicion.addEventListener("click", () => {
+  let catEditada = catBuscada;
+
+  let todasLasCat = leerLS("categorias")
+
+  todasLasCat.pop(catBuscada)
+
+  catEditada.nombre = $inputNombreCat.value 
+  
+  todasLasCat.push(catEditada)
+
+
+  guardarEnLS("categorias", todasLasCat)
+  pintarCategorias("categorias")
+
+
+  /////
+
+  let operaciones = leerLS("operaciones");
+  
+
+  operaciones = operaciones.map((op) => op.categoria === catEditada.nombre ? { ...op, categoria: catEditada.nombre } : op);
+
+  guardarEnLS("operaciones", operaciones);
+  
+  pintarOperaciones(operaciones);
+
+  ocultarElemento([$vistaEditarCat]);
+  mostrarElemento([$vistaListaCategorias])
+
+})
+
+  $btnCancelarEditarCat.addEventListener("click", () => {
+    ocultarElemento([$vistaEditarCat]);
+    mostrarElemento([$vistaListaCategorias]);
+  });
+
 
 //===== agregar categoria ==================
 //captura de elementos HTML
@@ -434,18 +599,36 @@ $btnAgregarCategoria.addEventListener("click", () => {
 
   todasLasCat.push(nuevaCategoria)
   guardarEnLS("categorias", todasLasCat)
-  pintarCategorias(todasLasCat)
+  pintarCategorias("categorias")
   $inputCategoria.value = ""
-  actualizarCategorias()
 
 })
 
-function actualizarCategorias() {
-  leerLS("categorias")
-  //agregar las nuevas y viejas categorias en el select de nuevaOp y editarOp
-  //quitar las eliminadas cambiar el nombre de las editadas
-  //eliminar las operaciones que esten subidas con la categorias recien eliminada
-}
+
+/////////// trabajando en esto de eliminar la operacion cuando quito la categoria del array
+
+// function actualizarCategorias() {
+//   let datos = leerLS("categorias")
+
+//   for (const categoria of datos) {
+//     pintarCategorias()
+//   }
+// /////
+//   function quitarOperacion(idOperacion) {
+//     const datos = leerLS("operaciones")
+//     const nuevoArray = datos.filter(operacion => operacion.id !== idOperacion)
+  
+//     todasLasOp = nuevoArray; 
+  
+//     guardarEnLS("operaciones", todasLasOp);
+  
+//     return todasLasOp;
+//   } 
+
+// }
+//////////
+
+
 
 //tienen que actualizarse las categorias en el select, puede hacerse por fuera con una funcion y ejecutarla en este click, puede reutilizarse para cuando elimine o edite alguna categoria
 
@@ -494,6 +677,7 @@ function actualizarCategorias() {
 window.onload = () => {
   todasLasOp = leerLS("operaciones")
   pintarOperaciones(todasLasOp)
+  pintarCategorias()
   hayOp()
   actualizarBalance()
 }

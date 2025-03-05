@@ -95,13 +95,6 @@
                                 <div class="h-14 p-1 flex flex-col justify-between" id="campo-categoria">
                                     <label>Categoría</label>
                                     <select id="categoria">
-                                        <option value="todas">Todas</option>
-                                        <option value="comida">Comida</option>
-                                        <option value="servicios">Servicios</option>
-                                        <option value="salida">Salida</option>
-                                        <option value="educacion">Educación</option>
-                                        <option value="transporte">Transporte</option>
-                                        <option value="trabajo">Trabajo</option>
                                     </select>
                                 </div>
                                 <!-- INPUT FECHA -->
@@ -151,9 +144,9 @@
                         <thead class="contenedor-encabezado">
                             <tr>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Monto</th>
                                 <th scope="col">Categoría</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Monto</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -186,12 +179,7 @@
                     </div>
                     <div>
                         <label for="categoria">Categoría</label>
-                        <select name="categoria" class="categoria">
-                            <option value="Servicios" id="servicios">Servicios</option>
-                            <option value="Salidas" id="salidas">Salidas</option>
-                            <option value="Educación" id="educacion">Educación</option>
-                            <option value="Transporte" id="transporte">Transporte</option>
-                            <option value="Trabajo" id="trabajo">Trabajo</option>
+                        <select name="categoria" class="categoria" id="categorias-nueva-op">
                         </select>
                     </div>
                     <div>
@@ -228,12 +216,7 @@
                     </div>
                     <div>
                         <label for="categoria">Categoría</label>
-                        <select name="categoria" class="categoria" id="categoria-editar">
-                            <option value="Servicios" id="servicios">Servicios</option>
-                            <option value="Salidas" id="salidas">Salidas</option>
-                            <option value="Educación" id="educacion">Educación</option>
-                            <option value="Transporte" id="transporte">Transporte</option>
-                            <option value="Trabajo" id="trabajo">Trabajo</option>
+                        <select name="categoria" class="categoria" id="categorias-editar">
                         </select>
                     </div>
                     <div>
@@ -248,22 +231,29 @@
       
        <!-- vista categorias -->
         <section class="hidden" id="vista-categorias">
-            <div><!-- contenedor general -->
+            <div id="vista-lista-categorias"><!-- vista lista de categorias -->
                 <h2>Categorías</h2>
-                <label>Nombre</label>
                 <div><!-- input + boton -->
-                    <div class="contenedor-input-boton"><!-- contenedor general -->
+                    <form id="form-agregar-categoria"><!-- contenedor general -->
+                        <label>Nombre</label>
                         <input class="input" type="text" name id="input-categoria">
-                        <button id="agregar-categoria" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
-                    </div>
+                    </form>
+                    <button id="agregar-categoria" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
                 </div>
                 <div><!-- categorias -->
-
                     <ul id="lista-categorias">
-
-             
-
                     </ul>
+                </div>
+            </div>
+            <div id="vista-editar-cat" class="hidden"> <!-- vista editar categoria-->
+                <h2>Editar Categoría</h2>
+                <form id="form-editar-categoria">
+                    <label for="nombre-cat">Nombre</label>
+                    <input id="nombre-cat" type="text">
+                </form>
+                <div>
+                    <button id="boton-cancelar-editar-cat">Cancelar</button>
+                    <button id="boton-agregar-edicion-cat">Editar</button>
                 </div>
             </div>
 
