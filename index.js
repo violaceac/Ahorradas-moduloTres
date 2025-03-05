@@ -470,11 +470,11 @@ function pintarCategorias() {
     <option value="${valueCat}">${nombre}</option>
     `
 
-    $ulCategorias.innerHTML += `<li>
-    <span> ${nombre}</span>
-    <div>
-      <button id="${id}" class="button-edit-cat border border-black shadow bg-green-600">Editar</button>
-      <button id="${id}" class="button-delete-cat border border-black shadow bg-red-600">Eliminar</button>
+    $ulCategorias.innerHTML += `<li class="flex justify-between items-center>
+    <span class="bg-sky-100 text-sky-800 px-2 py-2 mb-2 rounded-md"> ${nombre}</span>
+    <div class="flex space-x-2">
+      <button id="${id}" class="button-edit-cat text-blue-500 hover:text-blue-700 pr-2 ml-0">Editar</button>
+      <button id="${id}" class="button-delete-cat text-red-500 hover:text-red-700 pr-0 ml-0">Eliminar</button>
     </div>
     </li>`
   }
@@ -566,13 +566,20 @@ let $btnAgregarEdicion = $("#boton-agregar-edicion-cat");
 //agregar la edicion de la categoria
 $btnAgregarEdicion.addEventListener("click", () => {
   let catEditada = catBuscada;
+  console.log(catEditada)
+
   catEditada.nombre = $inputNombreCat.value;
+  console.log(catEditada)
+
   
   let todasLasCat = leerLS("categorias");
+  console.log(todasLasCat)
   
   const categoriasActualizadas = actualizarCategoria(catEditada, todasLasCat);
+  console.log(categoriasActualizadas)
   
   guardarEnLS("categorias", categoriasActualizadas);
+  console.log(categoriasActualizadas)
   
   // Actualizar las operaciones que usan esta categoría
   let operaciones = leerLS("operaciones");
