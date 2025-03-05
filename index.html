@@ -75,13 +75,11 @@
                            
             <!-- FILTROS -->
             <div id="card-filtros" class="w-11/12 h-auto px-4 py-4 mt-6 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white stroke-neutral-50">
-                
-                                <div class="p-2 flex justify-between px-0 py-0	"> <!-- TITULO Y BOTON-->
-                                    <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
-                
-                                    <!-- BOTON OCULTAR FILTROS -->
-                                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
-                                </div>
+                <div class="p-2 flex justify-between px-0 py-0	"> <!-- TITULO Y BOTON-->
+                    <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
+                    <!-- BOTON OCULTAR FILTROS -->
+                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
+                </div>
                                 <!-- SELECT TIPO-->
                                 <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-tipo">
                                     <label class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
@@ -99,52 +97,52 @@
                                     </div>
                                 </div>
                                 
-                                <!-- SELECT CATEGORIA -->
-                                <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-categoria">
-                                    <label class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
-                                    <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
-                                        <select id="categoria" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700">
-                                            <option value="todas">Todas</option>
-                                            <option value="comida">Comida</option>
-                                            <option value="servicios">Servicios</option>
-                                            <option value="salida">Salida</option>
-                                            <option value="educacion">Educación</option>
-                                            <option value="transporte">Transporte</option>
-                                            <option value="trabajo">Trabajo</option>
-                                        </select>
-                                        <!-- Ícono de despliegue -->
-                                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <!-- INPUT FECHA -->
-                                 <div id="campo-fecha" class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0 py-0">
-                                    <label class="pt-4 text-stone-700 text-base font-medium">Desde</label>
-                                    <input type="date" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer">
-                                 </div>
+                <!-- SELECT CATEGORIA -->
+                <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-categoria">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
+                    <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
+                        <select id="categoria" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700">
+                            <option value="todas">Todas</option>
+                            <option value="comida">Comida</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="salida">Salida</option>
+                            <option value="educacion">Educación</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="trabajo">Trabajo</option>
+                        </select>
+                        <!-- Ícono de despliegue -->
+                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </div>
+                <!-- INPUT FECHA -->
+                <div id="campo-fecha" class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0 py-0">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Desde</label>
+                    <input type="date" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer">
+                </div>
 
-                                <!-- SELECT ORDENAR POR-->
-                                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 px-0 py-0 mb-0">
-                                    <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
-                                    <div class="relative w-full">
-                                        <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
-                                            <option value="mas-reciente"></option>
-                                            <option value="menos-reciente"></option>
-                                            <option value="mayor-monto"></option>
-                                            <option value="menor-monto"></option>
-                                            <option value="a-to-z"></option>
-                                            <option value="z-to-a"></option>
-                                        </select>
+                <!-- SELECT ORDENAR POR-->
+                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 px-0 py-0 mb-0">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
+                    <div class="relative w-full">
+                        <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                        <option value="mas-reciente"></option>
+                        <option value="menos-reciente"></option>
+                        <option value="mayor-monto"></option>
+                        <option value="menor-monto"></option>
+                        <option value="a-to-z"></option>
+                        <option value="z-to-a"></option>
+                        </select>
 
-                                        <!-- Ícono de despliegue -->
-                                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                        </svg>
-                                    </div>
-                                </div>
+                        <!-- Ícono de despliegue -->
+                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                 </div>
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
@@ -192,40 +190,58 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-        <section id="nueva-op" class="hidden w-11/12 max-w-md h-auto p-6 mt-6 border rounded-2xl flex flex-col justify-around shadow-lg bg-white">
+        <section id="nueva-op" class="hidden w-11/12 h-auto	p-4	 px-4	py-4 p-0 mt-6  border-1 rounded-2xl flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
             <div class="w-full" >
                 <form id="form-agregar" class="flex flex-col space-y-4">
+                    <h2 class="text-2xl font-bold text-gray-800 p-0 m-0	">Nueva operación</h2><!-- titulo -->
                     <div class="campo">
-                    <label for="descripcion" >Descripción</label>
-                    <input type="text" id="descripcion">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
                     <div>
-                        <label for="monto">Monto</label>
-                        <input type="number" id="monto">
+                        <label for="monto" class="pt-4 text-stone-700 text-base font-medium">Monto</label>
+                        <input type="number" id="monto" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
-                    <div>
-                        <label for="tipo">Tipo</label>
-                        <select name="tipo" id="tipo">
-                            <option value="gasto" checked>Gasto</option>
-                            <option value="ganancia">Ganacia</option>
-                        </select>
+                    <div> <!-- tipo de gastos -->
+                        <label for="tipo" class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
+                        <div class="relative w-full mt-2">
+                            <select name="tipo" id="tipo" 
+                                class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white">
+                                <option value="gasto" selected>Gasto</option>
+                                <option value="ganancia">Ganancia</option>
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
                     </div>
-                    <div>
-                        <label for="categoria">Categoría</label>
-                        <select name="categoria" class="categoria">
-                            <option value="Servicios" id="servicios">Servicios</option>
-                            <option value="Salidas" id="salidas">Salidas</option>
-                            <option value="Educación" id="educacion">Educación</option>
-                            <option value="Transporte" id="transporte">Transporte</option>
-                            <option value="Trabajo" id="trabajo">Trabajo</option>
-                        </select>
+
+                    <div><!-- selector de categorias -->
+                        <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
+                        <div class="relative w-full"><!-- selector de categorias -->
+                            <select name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
+                                <option value="Servicios" id="servicios">Servicios</option>
+                                <option value="Salidas" id="salidas">Salidas</option>
+                                <option value="Educación" id="educacion">Educación</option>
+                                <option value="Transporte" id="transporte">Transporte</option>
+                                <option value="Trabajo" id="trabajo">Trabajo</option>
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
                     </div>
-                    <div>
-                        <label for="fecha">Fecha</label>
-                        <input type="date" id="fecha">
+                    <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0">
+                        <label for="fecha" class="pt-2 text-stone-700 text-base font-medium">Fecha</label>
+                        <input type="date" id="fecha" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
                     </div>
+
+                    <button type="submit" id="boton-agregar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
                     <button id="boton-cancelar">Cancelar</button>
-                    <button type="submit" id="boton-agregar">Agregar</button>
                 </form>
             </div>
         </section>
