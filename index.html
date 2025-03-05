@@ -247,7 +247,7 @@
         </section>
       
        <!-- vista categorias -->
-        <section id="vista-categorias" class="hidden  w-11/12 h-auto m-0 p-0 border-1 rounded-2xl flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ml-4 mt-4">
+        <section id="vista-categorias" class="hidden w-11/12 h-auto m-0 p-0 border-1 rounded-2xl flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ml-4 mt-4">
 
             <div class="w-full px-4 py-4"><!-- contenedor general -->
                 <h2 class="text-2xl font-bold text-gray-800 pb-4">Categorías</h2>
@@ -312,49 +312,49 @@
 
 
         <!-- vista reportes -->
-        <section class="hidden flex flex-col items-center rounded-2xl shadow-lg bg-white stroke-neutral-50 mt-6	 px-4	py-4" id="vista-reportes">
+        <section id="vista-reportes" class="hidden w-11/12 h-auto p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50">
             
             <!--card sin reportes-->
-            <div class="hidden w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col items-center"> 
-                <h2>Reportes</h2>
-                <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance">
-                <h3>Operaciones insuficientes</h3>
-                <p>Prueba agregando más operaciones</p>
+            <div class="hidden"> 
+                <h2 class="text-2xl font-bold text-gray-800 pb-4">Reportes</h2>
+                <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance" class="my-8">
+                <h3 class="text-lg font-semibold text-cyan-600 mb-2 text-center mt-6">Operaciones insuficientes</h3>
+                <p class="text-sm text-gray-500 text-center mb-6">Prueba agregando más operaciones</p>
             </div> <!--fin card sin reportes-->
 
             <!--card con reportes-->
-            <div class="w-11/12 h-[1000px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col"> 
-                <h3>Reportes</h3>
-                <h4>Resumen</h4>
+            <div> 
+                <h3 class="text-2xl font-bold text-gray-800 pb-4">Reportes</h3>
+                <h4 class="text-xl font-semibold text-cyan-700 pb-4">Resumen</h4>
                 <div class="w-full flex flex-col justify-around">
-                    <span class="w-full mt-2">Categoría con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-emerald-600 mt-0">Categoría con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="text-sky-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-emerald-100">Categoria</span>
+                        <span class="text-end pt-4 text-emerald-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-5">Categoría con mayor gasto</span>
+                    <span class="w-full mt-5 text-lg font-medium text-red-700 mt-0">Categoría con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-red-700 bg-red-100">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
-                    <span class="w-full mt-5">Categoría con mayor balance</span>
+                    <span class="w-full mt-5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor balance</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="bg-sky-100 text-sky-800 px-2 py-2 mb-2 rounded-md mt-2">Categoria</span>
+                        <span class="text-end pt-4 text-sky-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-2.5">Mes con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-emerald-600 mt-0">Mes con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="text-sky-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-emerald-100">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-emerald-600">monto</span>
                     </div>
-                    <span class="w-full mt-2.5">Mes con mayor gasto</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-red-700 mt-0">Mes con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-red-700 bg-red-100">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
                 </div>
                 <div class="mt-4"> <!--container-totales-categorias-->
-                    <h3>Totales por categoría</h3>
+                    <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por categoría</h3>
                     <div class="w-full my-2 grid grid-cols-4 gap-4">
                         <h4>Categoría</h4>
                         <h4>Ganancias</h4>
@@ -370,7 +370,7 @@
                 </div>
 
                 <div class="mt-4"> <!--totales-por-mes-->
-                    <h3>Totales por mes</h3>
+                    <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por mes</h3>
                     <div>
                         <h4>Mes</h4>
                         <h4>Ganancias</h4>
