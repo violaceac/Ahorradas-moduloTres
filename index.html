@@ -327,63 +327,79 @@
                 <h3 class="text-2xl font-bold text-gray-800 pb-4">Reportes</h3>
                 <h4 class="text-xl font-semibold text-cyan-700 pb-4">Resumen</h4>
                 <div class="w-full flex flex-col justify-around">
-                    <span class="w-full mt-2.5 text-lg font-medium text-emerald-600 mt-0">Categoría con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-sky-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-emerald-100">Categoria</span>
+                        <span class="text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-stone-100	">Categoria</span>
                         <span class="text-end pt-4 text-emerald-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-5 text-lg font-medium text-red-700 mt-0">Categoría con mayor gasto</span>
+                    <span class="w-full mt-5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-red-700 bg-red-100">Categoria</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-neutral-800 bg-stone-100">Categoria</span>
                         <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
                     <span class="w-full mt-5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor balance</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="bg-sky-100 text-sky-800 px-2 py-2 mb-2 rounded-md mt-2">Categoria</span>
+                        <span class="bg-stone-100  text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2">Categoria</span>
                         <span class="text-end pt-4 text-sky-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-2.5 text-lg font-medium text-emerald-600 mt-0">Mes con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Mes con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-sky-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-emerald-100">Categoria</span>
+                        <span class="text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-stone-100	">Categoria</span>
                         <span class="text-end pt-4 text-base font-medium text-emerald-600">monto</span>
                     </div>
-                    <span class="w-full mt-2.5 text-lg font-medium text-red-700 mt-0">Mes con mayor gasto</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Mes con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-red-700 bg-red-100">Categoria</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-neutral-800 bg-stone-100">Categoria</span>
                         <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
                 </div>
+                
                 <div class="mt-4"> <!--container-totales-categorias-->
                     <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por categoría</h3>
-                    <div class="w-full my-2 grid grid-cols-4 gap-4">
-                        <h4>Categoría</h4>
-                        <h4>Ganancias</h4>
-                        <h4>Gastos</h4>
-                        <h4>Balance</h4>
+                
+                    <div class="w-full flex flex-col">
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Categoría</span>
+                            <span class="text-neutral-700">nombre categoría</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Ganancias</span>
+                            <span class="text-emerald-600 font-medium">$5000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Gastos</span>
+                            <span class="text-red-600 font-medium">$2000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Balance</span>
+                            <span class="text-sky-700 font-medium">$3000</span>
+                        </div>
                     </div>
-                    <div>
-                        <p>nombre categoría</p>
-                        <p>numero ganancias</p>
-                        <p>numero gastos</p>
-                        <p>numero balance</p>
-                    </div>
-                </div>
+                </div>                          
 
                 <div class="mt-4"> <!--totales-por-mes-->
                     <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por mes</h3>
-                    <div>
-                        <h4>Mes</h4>
-                        <h4>Ganancias</h4>
-                        <h4>Gastos</h4>
-                        <h4>Balance</h4>
+                
+                    <div class="w-full flex flex-col">
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Mes</span>
+                            <span class="text-neutral-700">2/2025</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Ganancias</span>
+                            <span class="text-emerald-600 font-medium">$5000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Gastos</span>
+                            <span class="text-red-600 font-medium">$2000</span>
+                        </div>
+                        <div class="flex justify-between p-2">
+                            <span class="text-lg font-medium text-sky-700">Balance</span>
+                            <span class="text-sky-700 font-medium">$3000</span>
+                        </div>
                     </div>
-                    <div>
-                        <p>fecha</p>
-                        <p>numero ganancias</p>
-                        <p>numero gastos</p>
-                        <p>numero balance</p>
-                    </div>
-                </div>
+                </div>                
+                
             </div><!--fin card con reportes-->
 
         </section> <!--fin vista reportes-->
