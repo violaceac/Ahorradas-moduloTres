@@ -193,7 +193,6 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-      
         <section id="nueva-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
             <div class="w-full" >
                 <form id="form-agregar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
@@ -236,7 +235,7 @@
                         </div>
                       
                     </div>
-                    <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0">
+                    <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0"><!--input fecha-->
                         <label for="fecha" class="pt-2 text-stone-700 text-base font-medium">Fecha</label>
                         <input type="date" id="fecha" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
                     </div>
@@ -309,7 +308,7 @@
        <!-- vista categorias -->
         <section id="vista-categorias" class="hidden w-11/12 h-auto m-0 p-0 border-1 rounded-2xl flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ml-4 mt-4">
 
-            <div class="w-full px-4 py-4"><!-- agregar categoria -->
+            <div id="vista-lista-categorias" class="flex-col w-full px-4 py-4"><!-- agregar categoria -->
                 <h2 class="text-2xl font-bold text-gray-800 pb-4">Categorías</h2>
                 <label class="pt-4 text-stone-700 text-base font-medium">Nombre</label>
                 <div><!-- input + boton -->
@@ -326,7 +325,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="w-full px-4 py-4"><!-- editar categoria -->
+            <div id="vista-editar-cat" class="hidden flex-col w-full px-4 py-4"><!-- editar categoria -->
                 <h2 class="text-2xl font-bold text-gray-800 pb-4">Editar ategoría</h2>
                 <label class="pt-4 text-stone-700 text-base font-medium">Nombre</label>
                 <div><!-- input + boton -->
@@ -338,7 +337,7 @@
                         <button id="boton-agregar-edicion-cat" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">+ Agregar edicion</button>
                     </div>
                 </div>
-                <div><!-- categorias -->
+                <div ><!-- categorias -->
                     <ul id="lista-categorias">
 
                     </ul>
