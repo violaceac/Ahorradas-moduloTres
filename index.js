@@ -1,4 +1,3 @@
-// import categorias from "./categorias.js"
 
 // funciones de LocalStorage
 
@@ -95,12 +94,12 @@ let todasLasOp = []
 //boton nueva operacion
 let $botonNuevaOp = $$(".boton-nueva-op");
 //boton agregar
-let $botonAgregar = $("#boton-agregar")
+let $botonAgregar = $("#boton-agregar");
 //vistas
 let $sectionNuevaOp = $("#nueva-op");
-let $cardSinOp = $("#card-sin-operaciones")
-let $vistaOpActivas = $("#card-operaciones-activas")
-let $formAgregar = $("#form-agregar")
+let $cardSinOp = $("#card-sin-operaciones");
+let $vistaOpActivas = $("#card-operaciones-activas");
+let $formAgregar = $("#form-agregar");
 
 // evento click boton nuevaOp
 $botonNuevaOp.forEach(e => {
@@ -124,6 +123,7 @@ $formAgregar.addEventListener("submit", (evento) => {
     fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
   }
 
+  console.log(evento.target[0].value),
   todasLasOp.push(nuevaOp)
   guardarEnLS("operaciones", todasLasOp)
   pintarOperaciones(todasLasOp)
@@ -136,6 +136,7 @@ $formAgregar.addEventListener("submit", (evento) => {
 $botonAgregar.addEventListener("click", () => {
   mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
   ocultarElemento([$sectionNuevaOp, $cardSinOp])
+  console.log("click")
 })
 
 // mostrar operaciones
@@ -273,7 +274,7 @@ let $btnEditarOp = $("#boton-editar")
 
 $btnEditarOp.addEventListener("click", () => {
   mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
-  ocultarElemento([$sectionEditarOp, $cardSinOp])
+  ocultarElemento([$sectionEditarOp, $cardSinOp, $sectionNuevaOp, $formAgregar])
 })
 
 // ===== card balance =======================
