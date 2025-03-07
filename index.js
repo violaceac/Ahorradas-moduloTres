@@ -176,7 +176,7 @@ function hayOp() {
 //captura vista formulario editar
 let $sectionEditarOp = $("#editar-op");
 //captura formulario editar
-let $formEditar = $(".form-editar");
+let $formEditar = $("#form-editar");
 
 // funcion eliminar operacion
 function quitarOperacion(idOperacion) {
