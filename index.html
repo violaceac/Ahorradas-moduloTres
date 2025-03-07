@@ -34,14 +34,14 @@
 </head>
 
 
-<body>
-    <header class="w-full h-12 flex justify-between items-center p-1 bg-sky-600 text-white">
+<body class="bg-slate-50">
+    <header class="w-full h-12 flex justify-between items-center p-1 pl-4 pr-4 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg ">
         <h1>AhorrADAs</h1>
         <button><i id="boton-hamburguesa" class="fa-solid fa-bars"></i></button>
-        <div id="botones-hamburguesa" class="hidden bg-sky-500 h-40 w-40 p-2.5 absolute top-12 right-0 flex flex-col justify-around items-start">
-            <button class="balance">Balance</button>
-            <button class="categorias">Categorías</button>
-            <button class="reportes">Reportes</button>
+        <div id="botones-hamburguesa" class="hidden bg-sky-500 p-0 p-0 absolute top-12 right-0 flex flex-col justify-around items-start ">
+            <button class="balance opcion-menu w-full px-4 py-4 text-white text-left hover:bg-sky-700">Balance</button>
+            <button class="categorias opcion-menu w-full px-4 py-4 text-white text-left hover:bg-sky-700">Categorías</button>
+            <button class="reportes opcion-menu w-full px-4 py-4 text-white text-left hover:bg-sky-700">Reportes</button>
         </div>
         <div id="botones-menu" class="hidden">
             <button class="balance">Balance</button>
@@ -54,88 +54,116 @@
         <!-- vista balance -->
         <section class="flex flex-col items-center" id="vista-balance"> 
             <!-- BALANCE -->
-            <div id="card-balance" class="w-11/12 h-72 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
-                                <h2>Balance</h2>
+            <div id="card-balance" class="w-11/12 h-auto	p-4	 px-4	py-4 p-0 mt-6  border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white stroke-neutral-50">
+                                <h2 class="text-2xl font-bold text-gray-800 p-0 m-0	">Balance</h2>
                                 <!-- MONTO GANANCIAS -->
-                                <div class="flex justify-between">
-                                    <p>Ganancias</p>
-                                    <p class="monto-ganancia">$0</p>
+
+                                <div class="flex justify-between pb-2	pt-4">
+                                    <p class="text-stone-700 text-md">Ganancias</p>
+                                    <span id="total-ganancia" class="monto-ganancia text-green-500">$ 0</span>
                                 </div>
                                 <!-- MONTO GASTOS -->
-                                <div class="flex justify-between">
-                                    <p>Gastos</p>
-                                    <p class="monto-gastos">$0</p>
+                                <div class="flex justify-between py-2">
+                                    <p class="text-stone-700 text-md">Gastos</p>
+                                    <span id="total-gastos" class="monto-gastos text-red-500" >$ 0</span>
                                 </div>
                                 <!-- MONTO TOTAL -->
-                                <div class="flex justify-between">
-                                    <h3>Total</h3>
-                                    <p class="monto-total">$0</p>
+                                <div class="flex justify-between pt-4">
+                                    <h3 class="text-stone-700 text-lg font-semibold">Total</h3>
+                                    <span id="monto-total" class="monto-total text-lg font-bold text-stone-700">$ 0</span>
+
                                 </div>
             </div> <!-- FIN BALANCE -->
                            
             <!-- FILTROS -->
-            <div id="card-filtros" class="w-11/12 h-96 p-2.5 mt-14 border-2 rounded-lg flex flex-col justify-around">
-                
-                                <div class="p-2 flex justify-between"> <!-- TITULO Y BOTON-->
-                                    <h2>Filtros</h2> <!-- TITULO -->
-                
-                                    <!-- BOTON OCULTAR FILTROS -->
-                                    <button>Ocultar filtros</button>
-                                </div>
+
+            <div id="card-filtros" class="w-11/12 h-auto px-4 py-4 mt-6 border-1 rounded-2xl flex flex-col justify-around shadow-lg bg-white stroke-neutral-50">
+                <div class="p-2 flex justify-between px-0 py-0	"> <!-- TITULO Y BOTON-->
+                    <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
+                    <!-- BOTON OCULTAR FILTROS -->
+                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
+                </div>
                                 <!-- SELECT TIPO-->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-tipo">
-                                    <label>Tipo</label>
-                                    <select id="tipo">
-                                        <option value="todos">Todos</option>
-                                        <option value="gasto">Gasto</option>
-                                        <option value="ganancia">Ganancia</option>
-                                    </select>
+                                <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-tipo">
+                                    <label class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
+                                    <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
+                                        <select id="tipo" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                                            <option value="todos">Todos</option>
+                                            <option value="gasto">Gasto</option>
+                                            <option value="ganancia">Ganancia</option>
+                                        </select>
+                                        <!-- Ícono de despliegue -->
+                                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                        </svg>
+                                    </div>
                                 </div>
-                                <!-- SELECT CATEGORIA -->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-categoria">
-                                    <label>Categoría</label>
-                                    <select id="categoria">
-                                        <option value="todas">Todas</option>
-                                        <option value="comida">Comida</option>
-                                        <option value="servicios">Servicios</option>
-                                        <option value="salida">Salida</option>
-                                        <option value="educacion">Educación</option>
-                                        <option value="transporte">Transporte</option>
-                                        <option value="trabajo">Trabajo</option>
-                                    </select>
-                                </div>
-                                <!-- INPUT FECHA -->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-fecha">
-                                    <label>Desde</label>
-                                    <input type="date">
-                                </div>
-                                <!-- SELECT ORDENAR POR-->
-                                <div class="h-14 p-1 flex flex-col justify-between" id="campo-orden">
-                                    <label>Ordenar por</label>
-                                    <select id="orden">
-                                        <option value="mas-reciente"></option>
-                                        <option value="menos-reciente"></option>
-                                        <option value="mayor-monto"></option>
-                                        <option value="menor-monto"></option>
-                                        <option value="a-to-z"></option>
-                                        <option value="z-to-a"></option>
-                                    </select>
-                                </div>
+                                
+                <!-- SELECT CATEGORIA -->
+                <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-categoria">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
+                    <div class="relative w-full"> <!-- se agrega el div para contener el icono de desplegable-->
+                        <select id="categoria" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700">
+                            <option value="todas">Todas</option>
+                            <option value="comida">Comida</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="salida">Salida</option>
+                            <option value="educacion">Educación</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="trabajo">Trabajo</option>
+                        </select>
+                        <!-- Ícono de despliegue -->
+                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                </div>
+                <!-- INPUT FECHA -->
+                <div id="campo-fecha" class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0 py-0">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Desde</label>
+                    <input id="desde-fecha" type="date" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer">
+                </div>
+
+                <!-- SELECT ORDENAR POR-->
+                <div id="campo-orden" class="h-auto w-full p-1 flex flex-col space-y-2 px-0 py-0 mb-0">
+                    <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
+                    <div class="relative w-full">
+                        <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
+                        <option value="mas-reciente"></option>
+                        <option value="menos-reciente"></option>
+                        <option value="mayor-monto"></option>
+                        <option value="menor-monto"></option>
+                        <option value="a-to-z"></option>
+                        <option value="z-to-a"></option>
+                        </select>
+
+                        <!-- Ícono de despliegue -->
+                        <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                 </div>
             </div> <!-- FIN FILTROS -->
             
             <!-- OPERACIONES -->
-            <div id="card-operaciones" class="w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg">
+            <div id="card-operaciones" class="w-11/12 h-[450px] px-4 py-4 mt-6  border-1 rounded-2xl shadow-lg bg-white stroke-neutral-50 mb-10">
                  <!--VISTA SIN OPERACIONES-->
-                <div class=" flex flex-col items-center" id="card-sin-operaciones">
+                <div class="flex flex-col justify-around w-full w-auto" id="card-sin-operaciones">
                     <div class="contenedor-tituloYBoton"> 
                         <!--TITULO-->
-                        <h2>Operaciones</h2>
+                        <h2 class="text-2xl font-bold text-gray-800">Operaciones</h2>
                         <!-- BOTON NUEVA OPERACION-->
-                        <button class="boton-nueva-op">+ Nueva operación</button>
+                        <button class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">+ Nueva operación</button>
                     </div>
-                    <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero">
-                    <h3>Sin resultados</h3>
-                    <p>Cambia los filtros o agrega operaciones</p>
+            
+                    <div class="flex flex-col items-center text-center">
+                        <img src="./imagenes/3857457.jpg" alt="imagen de billetera y movimiento de dinero" class="w-48 h-auto mb-4">
+                        <h3 class="text-lg font-semibold text-cyan-600">Sin resultados</h3>
+                        <p class="text-gray-600">Cambia los filtros o agrega operaciones</p>
+                    </div>
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
@@ -150,9 +178,9 @@
                         <thead class="contenedor-encabezado">
                             <tr>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Monto</th>
                                 <th scope="col">Categoría</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Monto</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -165,180 +193,249 @@
         </section><!--fin vista balance-->
 
         <!--VISTA NUEVA OPERACION-->
-        <section class="hidden flex justify-around items-center" id="nueva-op">
-            <div class="w-11/12 h-[200px] p-2.5 mt-14 border-2 rounded-lg" >
-                <form id="form-agregar">
+        <section id="nueva-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
+            <div class="w-full" >
+                <form id="form-agregar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
+                    <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
+
                     <div class="campo">
-                    <label for="descripcion">Descripción</label>
-                    <input type="text" id="descripcion">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
                     <div>
-                        <label for="monto">Monto</label>
-                        <input type="number" id="monto">
+                        <label for="monto" class="pt-4 text-stone-700 text-base font-medium">Monto</label>
+                        <input type="number" id="monto" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
+                    </div>
+                    <div> <!-- tipo de gastos -->
+                        <label for="tipo" class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
+                        <div class="relative w-full mt-2">
+                            <select name="tipo" id="tipo" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white">
+                                <option value="gasto" selected>Gasto</option>
+                                <option value="ganancia">Ganancia</option>
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+
+
+                    <div><!-- selector de categorias -->
+                        <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
+                        <div class="relative w-full"><!-- selector de categorias -->
+                            <select id="categorias-nueva-op" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                      
+                    </div>
+                    <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0"><!--input fecha-->
+                        <label for="fecha" class="pt-2 text-stone-700 text-base font-medium">Fecha</label>
+                        <input type="date" id="fecha" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
+                    </div>
+
+                    <button type="submit" id="boton-agregar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
+                    <button id="boton-cancelar" class="text-blue-700">Cancelar</button>
+
+                </form>
+            </div>
+        </section>
+
+        <!--VISTA EDITAR OPERACION-->
+        <section id="editar-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
+            <div class="w-full" >
+                <form id="form-editar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
+                    <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion-editar" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
                     <div>
-                        <label for="tipo">Tipo</label>
-                        <select name="tipo" id="tipo">
-                            <option value="gasto" checked>Gasto</option>
-                            <option value="ganancia">Ganacia</option>
-                        </select>
+                        <label for="monto" class="pt-4 text-stone-700 text-base font-medium">Monto</label>
+                        <input type="number" id="monto-editar" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
-                    <div>
-                        <label for="categoria">Categoría</label>
-                        <select name="categoria" class="categoria">
-                            <option value="Servicios" id="servicios">Servicios</option>
-                            <option value="Salidas" id="salidas">Salidas</option>
-                            <option value="Educación" id="educacion">Educación</option>
-                            <option value="Transporte" id="transporte">Transporte</option>
-                            <option value="Trabajo" id="trabajo">Trabajo</option>
-                        </select>
+                    <div> <!-- tipo de gastos -->
+                        <label for="tipo" class="pt-4 text-stone-700 text-base font-medium">Tipo</label>
+                        <div class="relative w-full mt-2">
+                            <select name="tipo" id="tipo-editar" 
+                                class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white">
+                                <option value="gasto" selected>Gasto</option>
+                                <option value="ganancia">Ganancia</option>
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
                     </div>
-                    <div>
-                        <label for="fecha">Fecha</label>
-                        <input type="date" id="fecha">
+                    <div><!-- selector de categorias -->
+                        <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
+                        <div class="relative w-full"><!-- selector de categorias -->
+                            <select id="categorias-editar" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
+                                <option value="Servicios" id="servicios">Servicios</option>
+                                <option value="Salidas" id="salidas">Salidas</option>
+                                <option value="Educación" id="educacion">Educación</option>
+                                <option value="Transporte" id="transporte">Transporte</option>
+                                <option value="Trabajo" id="trabajo">Trabajo</option>
+                            </select>
+                            <!-- Ícono de despliegue -->
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
                     </div>
-                    <button id="boton-cancelar">Cancelar</button>
-                    <button type="submit" id="boton-agregar">Agregar</button>
+                    <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0">
+                        <label for="fecha" class="pt-2 text-stone-700 text-base font-medium">Fecha</label>
+                        <input type="date" id="fecha-editar" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
+                    </div>
+
+                    <button type="submit" id="boton-editar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar edición</button>
+                    <button id="boton-cancelar" class="text-blue-700">Cancelar</button>
+
                 </form>
             </div>
         </section>
       
        <!-- vista categorias -->
-        <section class="hidden" id="vista-categorias">
-            <div><!-- contenedor general -->
-                <h2>Categorías</h2>
-                <label>Nombre de la categoría</label>
+        <section id="vista-categorias" class="hidden w-11/12 h-auto m-0 p-0 border-1 rounded-2xl flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ml-4 mt-4">
+
+            <div id="vista-lista-categorias" class="flex-col w-full px-4 py-4"><!-- agregar categoria -->
+                <h2 class="text-2xl font-bold text-gray-800 pb-4">Categorías</h2>
+                <label class="pt-4 text-stone-700 text-base font-medium">Nombre</label>
                 <div><!-- input + boton -->
-                    <div class="inputCategorias"><!-- contenedor general -->
-                        <input class="input" type="text" name id="inputt-categorias">
+                    <div class="inputCategorias w-full mt-2"><!-- contenedor general -->
+                        <input id="input-categoria" class="input w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mb-2" name id="input-categorias" type="text" id="inputt-categorias">
                     </div>
                     <div class="botonDeAgregar"><!-- boton agregar -->
-                        <button id="agregar-categoria-boton">Agregar</button>
+                        <button id="agregar-categoria" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">+ Agregar categoría</button>
                     </div>
                 </div>
                 <div><!-- categorias -->
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Comida</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
-                    </ul>
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Servicios</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
-                    </ul>
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Salidas</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
-                    </ul>
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Educación</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
-                    </ul>
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Transporte</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
-                    </ul>
-                    <ul class="flex justify-between items-center bg-gray-100 p-3 rounded-md">
-                        <span class="text-gray-700">Trabajo</span>
-                        <div class="flex space-x-2">
-                            <button class="text-blue-500 hover:text-blue-700">Edtar</button>
-                            <button class="text-red-500 hover:text-red-700">Eliminar</button>
-                        </div>
+                    <ul id="lista-categorias">
+
                     </ul>
                 </div>
-                <button class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">+ Agregar categoría</button>
+            </div>
+            <div id="vista-editar-cat" class="hidden flex-col w-full px-4 py-4"><!-- editar categoria -->
+                <h2 class="text-2xl font-bold text-gray-800 pb-4">Editar ategoría</h2>
+                <label class="pt-4 text-stone-700 text-base font-medium">Nombre</label>
+                <div><!-- input + boton -->
+                    <div class="inputCategorias w-full mt-2"><!-- contenedor general -->
+                        <input id="nombre-cat" class="input w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mb-2" type="text" id="inputt-categorias">
+                    </div>
+                    <div class="botonDeAgregar"><!-- boton agregar -->
+                        <button id="boton-cancelar-editar-cat" class="mt-4 w-full text-blue-500 py-2 px-4 rounded-md hover:bg-blue-600 mb-4">Cancelar</button>
+                        <button id="boton-agregar-edicion-cat" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">+ Agregar edicion</button>
+                    </div>
+                </div>
+                <div ><!-- categorias -->
+                    <ul id="lista-categorias">
+
+                    </ul>
+                </div>
+
             </div>
 
         </section> <!-- fin vista categorias-->
-
-
+        
         <!-- vista reportes -->
-        <section class="hidden flex flex-col items-center" id="vista-reportes">
+        <section id="vista-reportes" class="hidden w-11/12 h-auto p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50">
             
             <!--card sin reportes-->
-            <div class="hidden w-11/12 h-[450px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col items-center"> 
-                <h2>Reportes</h2>
-                <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance">
-                <h3>Operaciones insuficientes</h3>
-                <p>Prueba agregando más operaciones</p>
+            <div class="hidden"> 
+                <h2 class="text-2xl font-bold text-gray-800 pb-4">Reportes</h2>
+                <img src="./imagenes/11461897.png" alt="Imagen de persona haciendo un balance" class="my-8">
+                <h3 class="text-lg font-semibold text-cyan-600 mb-2 text-center mt-6">Operaciones insuficientes</h3>
+                <p class="text-sm text-gray-500 text-center mb-6">Prueba agregando más operaciones</p>
             </div> <!--fin card sin reportes-->
 
             <!--card con reportes-->
-            <div class="w-11/12 h-[1000px] p-2.5 mt-14 border-2 rounded-lg justify-around flex flex-col"> 
-                <h3>Reportes</h3>
-                <h4>Resumen</h4>
+            <div> 
+                <h3 class="text-2xl font-bold text-gray-800 pb-4">Reportes</h3>
+                <h4 class="text-xl font-semibold text-cyan-700 pb-4">Resumen</h4>
                 <div class="w-full flex flex-col justify-around">
-                    <span class="w-full mt-2">Categoría con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-stone-100	">Categoria</span>
+                        <span class="text-end pt-4 text-emerald-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-5">Categoría con mayor gasto</span>
+                    <span class="w-full mt-5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-neutral-800 bg-stone-100">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
-                    <span class="w-full mt-5">Categoría con mayor balance</span>
+                    <span class="w-full mt-5 text-lg font-medium text-sky-700 mt-0">Categoría con mayor balance</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="bg-stone-100  text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2">Categoria</span>
+                        <span class="text-end pt-4 text-sky-800 text-base font-medium">monto</span>
                     </div>
-                    <span class="w-full mt-2.5">Mes con mayor ganancia</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Mes con mayor ganancia</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="text-neutral-800 px-2 py-2 mb-2 rounded-md mt-2 text-emerald-600 bg-stone-100	">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-emerald-600">monto</span>
                     </div>
-                    <span class="w-full mt-2.5">Mes con mayor gasto</span>
+                    <span class="w-full mt-2.5 text-lg font-medium text-sky-700 mt-0">Mes con mayor gasto</span>
                     <div class="w-full grid grid-cols-2 gap-5">
-                        <span class="text-end">categoria</span>
-                        <span class="text-end">monto</span>
+                        <span class="px-2 py-2 mb-2 rounded-md mt-2 text-neutral-800 bg-stone-100">Categoria</span>
+                        <span class="text-end pt-4 text-base font-medium text-red-700">monto</span>
                     </div>
                 </div>
+                
                 <div class="mt-4"> <!--container-totales-categorias-->
-                    <h3>Totales por categoría</h3>
-                    <div class="w-full my-2 grid grid-cols-4 gap-4">
-                        <h4>Categoría</h4>
-                        <h4>Ganancias</h4>
-                        <h4>Gastos</h4>
-                        <h4>Balance</h4>
+                    <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por categoría</h3>
+                
+                    <div class="w-full flex flex-col">
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Categoría</span>
+                            <span class="text-neutral-700">nombre categoría</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Ganancias</span>
+                            <span class="text-emerald-600 font-medium">$5000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Gastos</span>
+                            <span class="text-red-600 font-medium">$2000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-neutral-800 font-semibold">Balance</span>
+                            <span class="text-sky-700 font-medium">$3000</span>
+                        </div>
                     </div>
-                    <div>
-                        <p>nombre categoría</p>
-                        <p>numero ganancias</p>
-                        <p>numero gastos</p>
-                        <p>numero balance</p>
-                    </div>
-                </div>
+                </div>                          
 
                 <div class="mt-4"> <!--totales-por-mes-->
-                    <h3>Totales por mes</h3>
-                    <div>
-                        <h4>Mes</h4>
-                        <h4>Ganancias</h4>
-                        <h4>Gastos</h4>
-                        <h4>Balance</h4>
+                    <h3 class="text-xl font-bold text-cyan-700 pb-4">Totales por mes</h3>
+                
+                    <div class="w-full flex flex-col">
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Mes</span>
+                            <span class="text-neutral-700">2/2025</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Ganancias</span>
+                            <span class="text-emerald-600 font-medium">$5000</span>
+                        </div>
+                        <div class="flex justify-between border-b p-2">
+                            <span class="text-lg font-medium text-sky-700">Gastos</span>
+                            <span class="text-red-600 font-medium">$2000</span>
+                        </div>
+                        <div class="flex justify-between p-2">
+                            <span class="text-lg font-medium text-sky-700">Balance</span>
+                            <span class="text-sky-700 font-medium">$3000</span>
+                        </div>
                     </div>
-                    <div>
-                        <p>fecha</p>
-                        <p>numero ganancias</p>
-                        <p>numero gastos</p>
-                        <p>numero balance</p>
-                    </div>
-                </div>
+                </div>                
+                
             </div><!--fin card con reportes-->
 
         </section> <!--fin vista reportes-->
