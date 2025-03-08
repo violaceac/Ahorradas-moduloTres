@@ -111,26 +111,30 @@ $botonNuevaOp.forEach(e => {
 })
 
 // formulario nueva operacion
-$formAgregar.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-
-  const nuevaOp = {
-    id: crypto.randomUUID(),
-    descripcion: evento.target[0].value,
-    monto: Number(evento.target[1].value),
-    tipo: evento.target[2].value,
-    categoria: evento.target[3].value,
-    fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
-  }
-
-  console.log(evento.target[0].value),
-  todasLasOp.push(nuevaOp)
-  guardarEnLS("operaciones", todasLasOp)
-  pintarOperaciones(todasLasOp)
-  hayOp()
-  actualizarBalance()
-   
+document.addEventListener("DOMContentLoaded", () => {
+  $formAgregar.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+  
+    const nuevaOp = {
+      id: crypto.randomUUID(),
+      descripcion: evento.target[0].value,
+      monto: Number(evento.target[1].value),
+      tipo: evento.target[2].value,
+      categoria: evento.target[3].value,
+      fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
+    }
+  
+    console.log(evento.target[0].value),
+    console.log("submit")
+    todasLasOp.push(nuevaOp)
+    guardarEnLS("operaciones", todasLasOp)
+    pintarOperaciones(todasLasOp)
+    hayOp()
+    actualizarBalance()
+     
+  })
 })
+
 
 //agregar y volver a "vistaBalance"
 $botonAgregar.addEventListener("click", () => {
