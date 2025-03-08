@@ -195,9 +195,8 @@
         <!--VISTA NUEVA OPERACION-->
         <section id="nueva-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
             <div class="w-full" >
+                <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
                 <form id="form-agregar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
-                    <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
-
                     <div class="campo">
                         <label for="descripcion">Descripción</label>
                         <input type="text" id="descripcion" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
@@ -214,10 +213,10 @@
                                 <option value="ganancia">Ganancia</option>
                             </select>
                             <!-- Ícono de despliegue -->
-                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                            <!-- <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
+                            </svg> -->
                         </div>
                     </div>
 
@@ -228,10 +227,10 @@
                             <select id="categorias-nueva-op" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
                             </select>
                             <!-- Ícono de despliegue -->
-                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                            <!-- <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
+                            </svg> -->
                         </div>
                       
                     </div>
@@ -240,7 +239,7 @@
                         <input type="date" id="fecha" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
                     </div>
 
-                    <button type="submit" id="boton-agregar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
+                    <button type="submit" id="boton-agregar" class=" bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
                     <button id="boton-cancelar" class="text-blue-700">Cancelar</button>
 
                 </form>
