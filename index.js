@@ -405,7 +405,7 @@ $selectOrden.addEventListener("input", () => {
 
 //==== VISTA CATEGORIAS =================================
 
-const categorias = [
+let categorias = [
   {
       id: crypto.randomUUID(),
       nombre:"comida"
@@ -487,16 +487,6 @@ function pintarCategorias() {
 }
 
 
-function quitarCategoria(idCategoria) {
-  const datos = leerLS("categorias")
-  const nuevoArray = datos.filter(categoria => categoria.id !== idCategoria)
-
-
-  guardarEnLS("categorias", nuevoArray);
-
-  return nuevoArray;
-} 
-
 
 function quitarOpPorCategoria(categoriaEliminada) {
   const datos = leerLS("operaciones")
@@ -518,12 +508,13 @@ function editDeleteCategorias() {
     button.addEventListener("click", (e) => {
       const datos = leerLS("categorias")
 
-      const categoriaEliminada = datos.find(cat => cat.id === e.target.id)?.nombre;
+      const categoriaEliminada = datos.find(cat => cat.id === e.target.id)?.nombre.toLowerCase();
       
-      const nuevoArrayCategorias = quitarCategoria(e.target.id)
+      const nuevoArrayCategorias = datos.filter(categoria => categoria.id !== e.target.id)
+      categorias = nuevoArrayCategorias
 
+      guardarEnLS("categorias", categorias)
       pintarCategorias(nuevoArrayCategorias)
-
 
 
       const arraySinOp = quitarOpPorCategoria(categoriaEliminada)
@@ -574,42 +565,42 @@ let $btnAgregarEdicion = $("#boton-agregar-edicion-cat");
 
 //agregar la edicion de la categoria
 $btnAgregarEdicion.addEventListener("click", () => {
-  let catEditada = catBuscada;
-  console.log(catEditada)
-
-  catEditada.nombre = $inputNombreCat.value;
-  console.log(catEditada)
-
   
+  //hasta aca se asigno correctamente catEditada
+  let catEditada = { ...catBuscada };
+
+  //aca cambia el nombre correctamente y en minuscula
+  catEditada.nombre = $inputNombreCat.value.toLowerCase();
+
+  //catEditada es nueva 
+  //catBuscada es vieja
+
+  //aca traigo las categorias, todavia tiene el nombre anterior la cat en edicion
   let todasLasCat = leerLS("categorias");
-  console.log(todasLasCat)
-  
+
+  // aca el array categoriasActualizadas tiene cambiado el nombre de la categoria en edicion
   const categoriasActualizadas = actualizarCategoria(catEditada, todasLasCat);
-  console.log(categoriasActualizadas)
-  
-  guardarEnLS("categorias", categoriasActualizadas);
-  console.log(categoriasActualizadas)
+
+  categorias = categoriasActualizadas
+
+  //aca se guarda en la clave categorias
+  guardarEnLS("categorias", categorias);
   
   // Actualizar las operaciones que usan esta categoría
   let operaciones = leerLS("operaciones");
-  
-  // Obtener el valor de categoría anterior (para buscar en operaciones)
-  const valorCategoriaAnterior = catBuscada.nombre.trim().replace(/\s+/g, "-").toLowerCase();
-  const valorCategoriaNueva = catEditada.nombre.trim().replace(/\s+/g, "-").toLowerCase();
-  
-  // Actualizar todas las operaciones que usan esta categoría pero no lo hace, consologueamos las operaciones despues de esto y las muestra tal cual asi que en guardar en LS se esta guardando como el array original 
+  console.log(operaciones)
 
-  operaciones = operaciones.map((op) => 
-    op.categoria === valorCategoriaAnterior ? { ...op, categoria: valorCategoriaNueva } : op
-  );
+  operaciones.forEach(op => {
+    if(op.categoria === catBuscada.nombre) {
+      op.categoria = catEditada.nombre
+    }
+  })
 
-
-  
+  //catEditada es nueva 
+  //catBuscada es vieja
   guardarEnLS("operaciones", operaciones);
   
   pintarOperaciones(operaciones);
-  
-
   
 
   ocultarElemento([$vistaEditarCat]);
@@ -638,7 +629,7 @@ $btnAgregarCategoria.addEventListener("click", () => {
 
   const nuevaCategoria = {
     id: crypto.randomUUID(),
-    nombre: $inputCategoria.value
+    nombre: $inputCategoria.value.toLowerCase()
   }
 
   todasLasCat.push(nuevaCategoria)
