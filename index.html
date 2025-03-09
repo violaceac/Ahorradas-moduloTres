@@ -131,12 +131,12 @@
                     <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
                     <div class="relative w-full">
                         <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
-                        <option value="mas-reciente"></option>
-                        <option value="menos-reciente"></option>
-                        <option value="mayor-monto"></option>
-                        <option value="menor-monto"></option>
-                        <option value="a-to-z"></option>
-                        <option value="z-to-a"></option>
+                        <option value="mas-reciente">Mas reciente</option>
+                        <option value="menos-reciente">Menos reciente</option>
+                        <option value="mayor-monto">Mayor monto</option>
+                        <option value="menor-monto">Menor monto</option>
+                        <option value="a-to-z">A - Z</option>
+                        <option value="z-to-a">Z - A</option>
                         </select>
 
                         <!-- Ícono de despliegue -->
@@ -213,10 +213,10 @@
                                 <option value="ganancia">Ganancia</option>
                             </select>
                             <!-- Ícono de despliegue -->
-                            <!-- <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg> -->
+                            </svg>
                         </div>
                     </div>
 
@@ -224,13 +224,13 @@
                     <div><!-- selector de categorias -->
                         <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
                         <div class="relative w-full"><!-- selector de categorias -->
-                            <select id="categorias-nueva-op" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
+                            <select id="categorias-nueva-op" name="categoria" class=" w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
                             </select>
                             <!-- Ícono de despliegue -->
-                            <!-- <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+                            <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg> -->
+                            </svg>
                         </div>
                       
                     </div>
@@ -279,11 +279,6 @@
                         <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
                         <div class="relative w-full"><!-- selector de categorias -->
                             <select id="categorias-editar" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
-                                <option value="Servicios" id="servicios">Servicios</option>
-                                <option value="Salidas" id="salidas">Salidas</option>
-                                <option value="Educación" id="educacion">Educación</option>
-                                <option value="Transporte" id="transporte">Transporte</option>
-                                <option value="Trabajo" id="trabajo">Trabajo</option>
                             </select>
                             <!-- Ícono de despliegue -->
                             <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
@@ -336,12 +331,6 @@
                         <button id="boton-agregar-edicion-cat" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">+ Agregar edicion</button>
                     </div>
                 </div>
-                <div ><!-- categorias -->
-                    <ul id="lista-categorias">
-
-                    </ul>
-                </div>
-
             </div>
 
         </section> <!-- fin vista categorias-->
@@ -442,6 +431,6 @@
     </main>
 
     <!-- ----- SCRIPT ------ -->
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

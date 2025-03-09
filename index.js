@@ -111,7 +111,7 @@ $botonNuevaOp.forEach(e => {
 })
 
 // formulario nueva operacion
-document.addEventListener("DOMContentLoaded", () => {
+
   $formAgregar.addEventListener("submit", (evento) => {
     evento.preventDefault();
   
@@ -124,8 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fecha: dayjs(evento.target[4].value).format("YYYY-MM-DD")
     }
   
-    console.log(evento.target[0].value),
-    console.log("submit")
     todasLasOp.push(nuevaOp)
     guardarEnLS("operaciones", todasLasOp)
     pintarOperaciones(todasLasOp)
@@ -133,14 +131,13 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarBalance()
      
   })
-})
+
 
 
 //agregar y volver a "vistaBalance"
 $botonAgregar.addEventListener("click", () => {
   mostrarElemento([$sectionVistaBalance, $vistaOpActivas]);
   ocultarElemento([$sectionNuevaOp, $cardSinOp])
-  console.log("click")
 })
 
 // mostrar operaciones
@@ -408,7 +405,7 @@ $selectOrden.addEventListener("input", () => {
 
 //==== VISTA CATEGORIAS =================================
 
-const categoriasIniciales = [
+const categorias = [
   {
       id: crypto.randomUUID(),
       nombre:"comida"
@@ -435,13 +432,13 @@ const categoriasIniciales = [
   }
 ]
 
-// Función para inicializar categorías si no existen
-function inicializarCategorias() {
-  const categorias = leerLS("categorias");
-  if(!categorias || categorias.length === 0) {
-    guardarEnLS("categorias", categoriasIniciales);
-  }
-}
+// // Función para inicializar categorías si no existen
+// function inicializarCategorias() {
+//   const categorias = leerLS("categorias");
+//   if(!categorias || categorias.length === 0) {
+//     guardarEnLS("categorias", categoriasIniciales);
+//   }
+// }
 
 //captura de elementos contenedores de categorias
 let $ulCategorias = $("#lista-categorias");
@@ -482,8 +479,10 @@ function pintarCategorias() {
       <button id="${id}" class="button-delete-cat text-red-500 hover:text-red-700 pr-0 ml-0">Eliminar</button>
     </div>
     </li>`
+
   }
   editDeleteCategorias()
+
 
 }
 
@@ -500,11 +499,12 @@ function quitarCategoria(idCategoria) {
 
 
 function quitarOpPorCategoria(categoriaEliminada) {
-  const datos = leerLS("operaciones");
+  const datos = leerLS("operaciones")
 
   const nuevoArray = datos.filter(operacion => operacion.categoria !== categoriaEliminada);
 
   guardarEnLS("operaciones", nuevoArray);
+
   return nuevoArray
 }
 
@@ -517,10 +517,14 @@ function editDeleteCategorias() {
   $$arrayButtonsDeleteCat.forEach(button => {
     button.addEventListener("click", (e) => {
       const datos = leerLS("categorias")
+
       const categoriaEliminada = datos.find(cat => cat.id === e.target.id)?.nombre;
       
       const nuevoArrayCategorias = quitarCategoria(e.target.id)
+
       pintarCategorias(nuevoArrayCategorias)
+
+
 
       const arraySinOp = quitarOpPorCategoria(categoriaEliminada)
       pintarOperaciones(arraySinOp)
@@ -654,7 +658,6 @@ $btnAgregarCategoria.addEventListener("click", () => {
 ////////////
 
 window.onload = () => {
-  inicializarCategorias();
   todasLasOp = leerLS("operaciones")
   pintarOperaciones(todasLasOp)
   pintarCategorias()
