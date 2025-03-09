@@ -81,7 +81,8 @@
                 <div class="p-2 flex justify-between px-0 py-0	"> <!-- TITULO Y BOTON-->
                     <h2 class="text-2xl font-bold text-gray-800">Filtros</h2> <!-- TITULO -->
                     <!-- BOTON OCULTAR FILTROS -->
-                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200">Ocultar filtros</button>
+                    <button class="text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200" id="ocultar-filtros">Ocultar filtros</button>
+                    <button class="hidden text-blue-500 font-regular hover:underline hover:text-blue-700 transition duration-200" id="mostrar-filtros">Mostrar filtros</button>
                 </div>
                                 <!-- SELECT TIPO-->
                                 <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 px-0	py-0" id="campo-tipo">
@@ -131,12 +132,12 @@
                     <label class="pt-4 text-stone-700 text-base font-medium">Ordenar por</label>
                     <div class="relative w-full">
                         <select id="orden" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none">
-                        <option value="mas-reciente"></option>
-                        <option value="menos-reciente"></option>
-                        <option value="mayor-monto"></option>
-                        <option value="menor-monto"></option>
-                        <option value="a-to-z"></option>
-                        <option value="z-to-a"></option>
+                        <option value="mas-reciente">Mas reciente</option>
+                        <option value="menos-reciente">Menos reciente</option>
+                        <option value="mayor-monto">Mayor monto</option>
+                        <option value="menor-monto">Menor monto</option>
+                        <option value="a-to-z">A - Z</option>
+                        <option value="z-to-a">Z - A</option>
                         </select>
 
                         <!-- Ícono de despliegue -->
@@ -167,12 +168,12 @@
                 </div>
     
                 <!-- OPERACIONES ACTIVAS -->
-                <div id="card-operaciones-activas" class="hidden" >
+                <div id="card-operaciones-activas" class="hidden flex-col" >
                     <div class="contenedor-tituloYBoton"> 
                         <!--TITULO-->
-                        <h2>Operaciones</h2>
+                        <h2 class="text-2xl font-bold text-gray-800">Operaciones</h2>
                         <!-- BOTON NUEVA OPERACION-->
-                        <button class="boton-nueva-op">+ Nueva operación</button>
+                        <button class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">+ Nueva operación</button>
                     </div>
                     <table>
                         <thead class="contenedor-encabezado">
@@ -194,15 +195,14 @@
 
         <!--VISTA NUEVA OPERACION-->
         <section id="nueva-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
-            <div class="w-full" >
+            <div class="w-full flex flex-col" >
+                <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
                 <form id="form-agregar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
-                    <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
-
-                    <div class="campo">
+                    <div class="campo"><!--descripcion-->
                         <label for="descripcion">Descripción</label>
                         <input type="text" id="descripcion" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
-                    <div>
+                    <div><!--monto-->
                         <label for="monto" class="pt-4 text-stone-700 text-base font-medium">Monto</label>
                         <input type="number" id="monto" class="w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mt-2">
                     </div>
@@ -220,12 +220,10 @@
                             </svg>
                         </div>
                     </div>
-
-
                     <div><!-- selector de categorias -->
                         <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
-                        <div class="relative w-full"><!-- selector de categorias -->
-                            <select id="categorias-nueva-op" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
+                        <div class="relative w-full">
+                            <select id="categorias-nueva-op" name="categoria" class=" w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
                             </select>
                             <!-- Ícono de despliegue -->
                             <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
@@ -233,23 +231,21 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </div>
-                      
                     </div>
                     <div class="h-auto w-full p-1 flex flex-col space-y-2 mb-4 mt-2	px-0 py-0"><!--input fecha-->
                         <label for="fecha" class="pt-2 text-stone-700 text-base font-medium">Fecha</label>
                         <input type="date" id="fecha" class="w-full h-10 border border-gray-300 rounded-md p-2 text-base pr-10 bg-transparent appearance-none cursor-pointer mb-4" >
                     </div>
 
-                    <button type="submit" id="boton-agregar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
-                    <button id="boton-cancelar" class="text-blue-700">Cancelar</button>
-
+                    <button type="submit" id="boton-agregar" class=" bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar</button>
                 </form>
+                <button id="boton-cancelar-agregar-op" class="text-blue-700 px-4 py-4">Cancelar</button>
             </div>
         </section>
 
         <!--VISTA EDITAR OPERACION-->
         <section id="editar-op" class="hidden w-11/12 h-auto	p-4	px-4 py-4 p-0 mt-6 ml-4	mb-8  border-1 rounded-2xl flex flex items-center justify-center shadow-lg bg-white stroke-neutral-50 ">
-            <div class="w-full" >
+            <div class="w-full flex flex-col" >
                 <form id="form-editar" class="flex flex-col space-y-4"> <!-- selector de nueva op-->
                     <h2 class="text-2xl font-bold text-gray-800 p-0 m-0">Nueva operación</h2><!-- titulo -->
 
@@ -280,11 +276,6 @@
                         <label for="categoria" class="pt-4 text-stone-700 text-base font-medium">Categoría</label>
                         <div class="relative w-full"><!-- selector de categorias -->
                             <select id="categorias-editar" name="categoria" class="categoria w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 bg-white mt-2">
-                                <option value="Servicios" id="servicios">Servicios</option>
-                                <option value="Salidas" id="salidas">Salidas</option>
-                                <option value="Educación" id="educacion">Educación</option>
-                                <option value="Transporte" id="transporte">Transporte</option>
-                                <option value="Trabajo" id="trabajo">Trabajo</option>
                             </select>
                             <!-- Ícono de despliegue -->
                             <svg class="w-5 h-5 text-gray-500 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
@@ -299,9 +290,8 @@
                     </div>
 
                     <button type="submit" id="boton-editar" class="boton-nueva-op bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700 transition duration-300 my-6 w-auto">Agregar edición</button>
-                    <button id="boton-cancelar" class="text-blue-700">Cancelar</button>
-
                 </form>
+                <button id="boton-cancelar-editar-op" class="text-blue-700 px-4 py-4">Cancelar</button>
             </div>
         </section>
       
@@ -333,16 +323,10 @@
                         <input id="nombre-cat" class="input w-full border border-gray-300 rounded-md p-2 text-base pr-10 appearance-none text-stone-700 mb-2" type="text" id="inputt-categorias">
                     </div>
                     <div class="botonDeAgregar"><!-- boton agregar -->
-                        <button id="boton-cancelar-editar-cat" class="mt-4 w-full text-blue-500 py-2 px-4 rounded-md hover:bg-blue-600 mb-4">Cancelar</button>
-                        <button id="boton-agregar-edicion-cat" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">+ Agregar edicion</button>
+                        <button id="boton-agregar-edicion-cat" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-2">+ Agregar edicion</button>
+                        <button id="boton-cancelar-editar-cat" class="mt-2 w-full text-blue-500 py-2 px-4 rounded-md hover:bg-blue-600 mb-2">Cancelar</button>
                     </div>
                 </div>
-                <div ><!-- categorias -->
-                    <ul id="lista-categorias">
-
-                    </ul>
-                </div>
-
             </div>
 
         </section> <!-- fin vista categorias-->
@@ -443,6 +427,6 @@
     </main>
 
     <!-- ----- SCRIPT ------ -->
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
