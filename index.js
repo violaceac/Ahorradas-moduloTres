@@ -81,6 +81,7 @@ $btnVistaReportes.forEach(e => {
   e.addEventListener("click", () => {
     mostrarElemento([$sectionVistaReportes]);
     ocultarElemento([$sectionVistaBalance, $sectionVistaCategorias, $sectionNuevaOp, $modalBotones])
+    pintarResumen()
   });
 })
 
@@ -618,13 +619,92 @@ $btnCancelarEditarCat.addEventListener("click", () => {
 });
 
 
+//==== FIN VISTA CATEGORIAS =================================
+
+////////////
+
+//==== VISTA REPORTES =================================
+//captura de contenedores de texto
+let $spanCatMayorGanancia = $("#cat-mayor-ganancia");
+let $spanMontoCatMayorGanancia = $("#monto-cat-mayor-ganancia");
+
+let $spanCatMayorGasto = $("#cat-mayor-gasto");
+let $spanMontoCatMayorGasto = $("#monto-cat-mayor-gasto")
+
+let $spanMesMayorGanancia = $("#mes-mayor-ganancia");
+let $spanMontoMesMayorGanancia = $("#monto-mes-mayor-ganancia");
+
+let $spanMesMayorGasto = $("#mes-mayor-gasto");
+let $spanMontoMesMayorGasto =$("#monto-mes-mayor-gasto");
+
+//pintarReportes?
+
+function pintarResumen() {
+  let datos = leerLS("operaciones")
+
+  /////
+
+  let arrayGanancias = datos.filter(element => element.tipo === "ganancia")
+  let mayorGanancia = { ...arrayGanancias[0]}
+
+  arrayGanancias.forEach(element => {
+    if(element.monto > mayorGanancia.monto) {
+      mayorGanancia = element;
+      return mayorGanancia
+    }
+  })
+  //categoria con mayor ganancia
+  $spanCatMayorGanancia.innerText = `${mayorGanancia.categoria}`;
+  $spanMontoCatMayorGanancia.innerText = `${mayorGanancia.monto}`;
+
+  //mes con mayor ganancia
+  $spanMesMayorGanancia.innerText = dayjs(mayorGanancia.fecha).format("MM-YYYY");
+  $spanMontoMesMayorGanancia.innerText = `${mayorGanancia.monto}`;
+
+  //////
+
+  let arrayGastos = datos.filter(element => element.tipo === "gasto")
+  let mayorGasto = { ...arrayGastos[0]}
+
+  arrayGastos.forEach(element => {
+    if(element.monto > mayorGasto.monto) {
+      mayorGasto = element;
+      return mayorGasto
+    }
+  })
+
+  //categoria con mayor gasto
+  $spanCatMayorGasto.innerText = `${mayorGasto.categoria}`;
+  $spanMontoCatMayorGasto.innerText = `${mayorGasto.monto}`;
+
+  //mes con mayor gasto
+  $spanMesMayorGasto.innerText = dayjs(mayorGasto.fecha).format("MM-YYYY");
+  $spanMontoMesMayorGasto.innerText = `${mayorGasto.monto}`;
+}
 
 
-//////////////////
+// const categoriasActualizadas = todasLasCat.map(categoria => {
+    
+//   if (categoria.id === catEditada.id) {
+//     categoria = { ...catEditada };
+//   } 
+//   return categoria;
+// });
+//filtrar las operaciones primero con un if, si son del tipo ganancia entonces hay que encontrar al mayor y acceder a su categoria para mostrarlo en $spanCatMayorGanancia y a su monto para mostrarlo en $spanMontoCatMayorGanancia
 
+
+
+
+
+
+
+
+//==== FIN VISTA REPORTES =================================
 
 
 ////////////
+
+
 
 window.onload = () => {
   todasLasOp = leerLS("operaciones")
